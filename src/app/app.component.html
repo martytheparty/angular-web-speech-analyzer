@@ -1,4 +1,54 @@
-<h3>Future home of the Angular Voice Analyzer</h3>
+<h3>The Angular Voice Analyzer</h3>
+<div class="indicators">
+    <app-api-indicator 
+        title="Has Speech Recognition API"
+    ></app-api-indicator>
+    <app-api-indicator
+        title="Has Webkit Speech Recognition API"
+    ></app-api-indicator>
+</div>
+<div>
+    Has Speech Recognition API 
+    <strong>{{hasSpeechRecognition}}</strong>
+    @if(hasSpeechRecognition)
+    {
+        <mat-icon 
+        class="positive"
+        tabindex="0"
+        aria-hidden="false" 
+        aria-label="The Speech Recognition API Exists" 
+        fontIcon="thumb_up">
+        </mat-icon>
+    } @else {
+        <mat-icon 
+        class="negative"
+        tabindex="0"
+        aria-hidden="false" 
+        aria-label="The Speech Recognition API Does Not Exist" 
+        fontIcon="thumb_down">
+        </mat-icon>
+    }
 
-<div>Has Speech Recognition API <strong>{{hasSpeechRecognition}}</strong></div>
-<div>Has Webkit Speech Recognition API <strong>{{hasWebkitSpeechRecognition}}</strong></div>
+</div>
+<div>
+    Has Webkit Speech Recognition API 
+    <strong>{{hasWebkitSpeechRecognition}}</strong>
+    @if(hasWebkitSpeechRecognition)
+    {
+        <mat-icon 
+        class="positive"
+        tabindex="0"
+        aria-hidden="false" 
+        aria-label="The Webkit Speech Recognition API Exists" 
+        fontIcon="thumb_up">
+        </mat-icon>
+    } @else {
+        <mat-icon 
+        class="negative"
+        tabindex="0"
+        aria-hidden="false" 
+        aria-label="The Webkit Speech Recognition API Does Not Exist" 
+        fontIcon="thumb_down">
+        </mat-icon>
+    }
+</div>

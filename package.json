@@ -7,7 +7,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "material": "ng add @angular/material"
+    "material": "ng add @angular/material",
+    "api-indicator": "ng generate component api-indicator"
   },
   "private": true,
   "dependencies": {
