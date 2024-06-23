@@ -1,1 +1,24 @@
+{{hasApi()}}
+
+@if(hasApi())
+    {
+        <mat-icon 
+        class="positive"
+        tabindex="0"
+        aria-hidden="false" 
+        [attr.aria-label]="positiveAriaLabel()" 
+        fontIcon="thumb_up">
+        </mat-icon>
+    } @else {
+        <mat-icon 
+        class="negative"
+        tabindex="0"
+        aria-hidden="false" 
+        [attr.aria-label]="negativeAriaLabel()"
+        fontIcon="thumb_down">
+        </mat-icon>
+    }
+
 {{title()}}
+
+

@@ -2,9 +2,15 @@
 <div class="indicators">
     <app-api-indicator 
         title="Has Speech Recognition API"
+        [hasApi]="hasSpeechRecognition"
+        positiveAriaLabel="The Speech Recognition API Exists On This Browser"
+        negativeAriaLabel="The Speech Recognition API Does Not Exist On This Browser"
     ></app-api-indicator>
     <app-api-indicator
         title="Has Webkit Speech Recognition API"
+        [hasApi]="hasWebkitSpeechRecognition"
+        positiveAriaLabel="The Webkit Speech Recognition API Exists On This Browser"
+        negativeAriaLabel="The Webkit Speech Recognition API Does Not Exist On This Browser"
     ></app-api-indicator>
 </div>
 <div>
