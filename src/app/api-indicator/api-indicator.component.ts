@@ -1,10 +1,14 @@
 import { Component, input } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'app-api-indicator',
   standalone: true,
-  imports: [ MatIconModule ],
+  imports: [ 
+    MatIconModule, 
+    MatCardModule 
+  ],
   templateUrl: './api-indicator.component.html',
   styleUrl: './api-indicator.component.scss'
 })
