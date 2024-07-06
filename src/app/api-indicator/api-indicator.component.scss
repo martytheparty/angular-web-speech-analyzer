@@ -1,4 +1,26 @@
 mat-card
 {
     width: 100%;
+
+    .indicator-icon
+    {
+        position: relative;
+        width: 28px;
+        height: 22px;
+
+
+            mat-icon {
+                position: absolute;
+                top: -2px;
+            }
+
+            mat-icon.positive {
+                color: #228B22
+            }
+            
+            mat-icon.negative {
+               color: #C70039 
+            }
+        
+    }
 }

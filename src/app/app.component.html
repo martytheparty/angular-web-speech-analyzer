@@ -1,60 +1,12 @@
 <h3>The Angular Voice Analyzer</h3>
 <div class="indicators">
     <app-api-indicator 
-        title="Has Speech Recognition API"
+        title="Speech Recognition API"
         [hasApi]="hasSpeechRecognition"
-        positiveAriaLabel="The Speech Recognition API Exists On This Browser"
-        negativeAriaLabel="The Speech Recognition API Does Not Exist On This Browser"
     ></app-api-indicator>
     <app-api-indicator
-        title="Has Webkit Speech Recognition API"
+        title="Webkit Speech Recognition API"
         [hasApi]="hasWebkitSpeechRecognition"
-        positiveAriaLabel="The Webkit Speech Recognition API Exists On This Browser"
-        negativeAriaLabel="The Webkit Speech Recognition API Does Not Exist On This Browser"
     ></app-api-indicator>
 </div>
-<div>
-    Has Speech Recognition API 
-    <strong>{{hasSpeechRecognition}}</strong>
-    @if(hasSpeechRecognition)
-    {
-        <mat-icon 
-        class="positive"
-        tabindex="0"
-        aria-hidden="false" 
-        aria-label="The Speech Recognition API Exists" 
-        fontIcon="thumb_up">
-        </mat-icon>
-    } @else {
-        <mat-icon 
-        class="negative"
-        tabindex="0"
-        aria-hidden="false" 
-        aria-label="The Speech Recognition API Does Not Exist" 
-        fontIcon="thumb_down">
-        </mat-icon>
-    }
 
-</div>
-<div>
-    Has Webkit Speech Recognition API 
-    <strong>{{hasWebkitSpeechRecognition}}</strong>
-    @if(hasWebkitSpeechRecognition)
-    {
-        <mat-icon 
-        class="positive"
-        tabindex="0"
-        aria-hidden="false" 
-        aria-label="The Webkit Speech Recognition API Exists" 
-        fontIcon="thumb_up">
-        </mat-icon>
-    } @else {
-        <mat-icon 
-        class="negative"
-        tabindex="0"
-        aria-hidden="false" 
-        aria-label="The Webkit Speech Recognition API Does Not Exist" 
-        fontIcon="thumb_down">
-        </mat-icon>
-    }
-</div>

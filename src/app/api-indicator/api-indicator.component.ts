@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, input, effect } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 
@@ -15,6 +15,18 @@ import { MatCardModule } from '@angular/material/card';
 export class ApiIndicatorComponent {
   title = input.required<string>();
   hasApi = input.required<boolean>();
-  positiveAriaLabel = input.required<string>();
-  negativeAriaLabel = input.required<string>();
+
+  prefix = '';
+
+  constructor() {
+    effect(
+      () => {
+        if (this.hasApi()) {
+          this.prefix = 'This browser has the ';
+        } else {
+          this.prefix = 'This browser does not have the ';
+        }
+      }
+    )
+  }
 }
