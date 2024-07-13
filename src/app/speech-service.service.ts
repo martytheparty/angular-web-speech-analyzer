@@ -13,6 +13,8 @@ export class SpeechServiceService {
   audioStart =  signal<any>(undefined);
   audioEnd =  signal<any>(undefined);
 
+  
+
   constructor() {
 
     if ('SpeechRecongition' in window) {
@@ -42,7 +44,6 @@ export class SpeechServiceService {
 
       this.recognition.onaudiostart = (result: any) => {
         this.audioStart.set(result);
-       
       }
     }
   }
