@@ -8,7 +8,8 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "material": "ng add @angular/material",
-    "api-indicator": "ng generate component api-indicator"
+    "api-indicator": "ng generate component api-indicator",
+    "speechService": "ng g s speechService"
   },
   "private": true,
   "dependencies": {
