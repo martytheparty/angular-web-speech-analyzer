@@ -1,9 +1,9 @@
-import { Component, effect } from '@angular/core';
+import { Component, effect, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { ApiIndicatorComponent } from './api-indicator/api-indicator.component'
-import {MatButtonModule} from '@angular/material/button';
 import { SpeechServiceService } from './speech-service.service';
+import { RecordButtonComponent } from './record-button/record-button.component';
 
 declare var webkitSpeechRecognition: any;
 declare var SpeechRecognition: any;
@@ -15,7 +15,7 @@ declare var SpeechRecognition: any;
     RouterOutlet,
     MatIconModule,
     ApiIndicatorComponent,
-    MatButtonModule
+    RecordButtonComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
@@ -25,7 +25,7 @@ export class AppComponent {
   hasSpeechRecognition = false;
   hasWebkitSpeechRecognition = false;
 
-  speechService: SpeechServiceService = new SpeechServiceService();
+  speechService: SpeechServiceService = inject(SpeechServiceService);
 
   constructor() {
 
@@ -43,11 +43,6 @@ export class AppComponent {
         this.result = this.speechService.voiceResult();
       }
     });
-  }
-
-  record(): void
-  {
-    this.speechService.record();
   }
 
 }

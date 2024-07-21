@@ -17,6 +17,8 @@ export class SpeechServiceService {
 
   constructor() {
 
+    console.log('creating speech service');
+
     if ('SpeechRecongition' in window) {
       this.recognition =  new SpeechRecognition();
     }  else if ('webkitSpeechRecognition' in window) {
@@ -38,7 +40,7 @@ export class SpeechServiceService {
       }
 
       this.recognition.onend = (result: any) => {
-        console.log("1: Publish End")
+        console.log("2: Publish End")
        this.audioEnd.set(result);
       }
 

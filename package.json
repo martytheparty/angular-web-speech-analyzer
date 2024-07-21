@@ -9,7 +9,8 @@
     "test": "ng test",
     "material": "ng add @angular/material",
     "api-indicator": "ng generate component api-indicator",
-    "speechService": "ng g s speechService"
+    "speechService": "ng g s speechService",
+    "discrete-record-button": "ng generate component record-button"
   },
   "private": true,
   "dependencies": {
