@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, effect } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { ApiIndicatorComponent } from './api-indicator/api-indicator.component'
@@ -21,6 +21,7 @@ declare var SpeechRecognition: any;
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
+  result: string = '';
   hasSpeechRecognition = false;
   hasWebkitSpeechRecognition = false;
 
@@ -35,6 +36,13 @@ export class AppComponent {
     if ('webkitSpeechRecognition' in window) {
       this.hasWebkitSpeechRecognition = true;
     }
+
+    effect(  () => {
+      console.log('recognition', this.speechService.voiceResult());
+      if (this.speechService.voiceResult() !== undefined) {
+        this.result = this.speechService.voiceResult();
+      }
+    });
   }
 
   record(): void
