@@ -2,8 +2,8 @@ import { Component, effect, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { ApiIndicatorComponent } from './api-indicator/api-indicator.component'
-import { SpeechServiceService } from './speech-service.service';
 import { RecordButtonComponent } from './record-button/record-button.component';
+import { DiscreteResultComponent } from './discrete-result/discrete-result.component';
 
 declare var webkitSpeechRecognition: any;
 declare var SpeechRecognition: any;
@@ -15,17 +15,16 @@ declare var SpeechRecognition: any;
     RouterOutlet,
     MatIconModule,
     ApiIndicatorComponent,
-    RecordButtonComponent
+    RecordButtonComponent,
+    DiscreteResultComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  result: string = '';
+
   hasSpeechRecognition = false;
   hasWebkitSpeechRecognition = false;
-
-  speechService: SpeechServiceService = inject(SpeechServiceService);
 
   constructor() {
 
@@ -36,13 +35,6 @@ export class AppComponent {
     if ('webkitSpeechRecognition' in window) {
       this.hasWebkitSpeechRecognition = true;
     }
-
-    effect(  () => {
-      console.log('recognition', this.speechService.voiceResult());
-      if (this.speechService.voiceResult() !== undefined) {
-        this.result = this.speechService.voiceResult();
-      }
-    });
   }
 
 }
