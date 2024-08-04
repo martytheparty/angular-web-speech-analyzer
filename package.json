@@ -11,7 +11,8 @@
     "api-indicator": "ng generate component api-indicator",
     "speechService": "ng g s speechService",
     "discrete-record-button": "ng generate component record-button",
-    "discrete-result": "ng generate component discrete-result"
+    "discrete-result": "ng generate component discrete-result",
+    "discrete": "ng generate component discrete"
   },
   "private": true,
   "dependencies": {

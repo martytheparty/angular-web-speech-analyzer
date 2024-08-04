@@ -1,3 +1,13 @@
-import { Routes } from '@angular/router';
+import { 
+    Routes, Route } from '@angular/router';
+import { DiscreteComponent } from './discrete/discrete.component';
 
-export const routes: Routes = [];
+
+const root: Route = { path: '', redirectTo: '/discrete', pathMatch: 'full' };
+const discrete: Route = { path: 'discrete', component: DiscreteComponent };
+
+
+export const routes: Routes = [
+    root,
+    discrete
+];

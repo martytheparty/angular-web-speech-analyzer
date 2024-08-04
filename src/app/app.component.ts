@@ -4,6 +4,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { ApiIndicatorComponent } from './api-indicator/api-indicator.component'
 import { RecordButtonComponent } from './record-button/record-button.component';
 import { DiscreteResultComponent } from './discrete-result/discrete-result.component';
+import { DiscreteComponent } from './discrete/discrete.component';
 
 declare var webkitSpeechRecognition: any;
 declare var SpeechRecognition: any;
@@ -15,8 +16,7 @@ declare var SpeechRecognition: any;
     RouterOutlet,
     MatIconModule,
     ApiIndicatorComponent,
-    RecordButtonComponent,
-    DiscreteResultComponent
+    DiscreteComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
