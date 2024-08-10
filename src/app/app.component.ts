@@ -2,8 +2,8 @@ import { Component, effect, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { ApiIndicatorComponent } from './api-indicator/api-indicator.component'
-import { RecordButtonComponent } from './record-button/record-button.component';
-import { DiscreteResultComponent } from './discrete-result/discrete-result.component';
+import { RecordButtonComponent } from './discrete/record-button/record-button.component';
+import { DiscreteResultComponent } from './discrete/discrete-result/discrete-result.component';
 import { DiscreteComponent } from './discrete/discrete.component';
 
 declare var webkitSpeechRecognition: any;

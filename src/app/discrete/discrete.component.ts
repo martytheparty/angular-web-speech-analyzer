@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { DiscreteResultComponent } from '../discrete-result/discrete-result.component';
-import { RecordButtonComponent } from '../record-button/record-button.component';
+import { DiscreteResultComponent } from './discrete-result/discrete-result.component';
+import { RecordButtonComponent } from './record-button/record-button.component';
 
 @Component({
   selector: 'app-discrete',

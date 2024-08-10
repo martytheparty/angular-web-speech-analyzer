@@ -12,7 +12,10 @@
     "speechService": "ng g s speechService",
     "discrete-record-button": "ng generate component record-button",
     "discrete-result": "ng generate component discrete-result",
-    "discrete": "ng generate component discrete"
+    "discrete": "ng generate component discrete",
+    "logs": "ng generate component logs",
+    "continuous": "ng generate component continuous",
+    "api": "ng generate component api"
   },
   "private": true,
   "dependencies": {

@@ -1,5 +1,5 @@
 import { Component, effect, inject } from '@angular/core';
-import { SpeechServiceService } from '../speech-service.service';
+import { SpeechServiceService } from '../../speech-service.service';
 
 @Component({
   selector: 'app-discrete-result',
