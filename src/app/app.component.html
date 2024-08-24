@@ -9,5 +9,17 @@
         [hasApi]="hasWebkitSpeechRecognition"
     ></app-api-indicator>
 </div>
+<div>{{url}}</div>
 
-<app-discrete></app-discrete>
+<mat-tab-group>
+    <mat-tab label="Discrete"> Discrete </mat-tab>
+    <mat-tab label="API"> API </mat-tab>
+    <mat-tab label="Continous"> Continous </mat-tab>
+    <mat-tab label="Logs"> Logs </mat-tab>
+</mat-tab-group>
+
+<a routerLink="/discrete">discrete</a> 
+<a routerLink="/api">API</a> 
+<a routerLink="/continuous">continous</a> 
+<a routerLink="/logs">logs</a>
+<router-outlet></router-outlet>
