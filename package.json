@@ -15,7 +15,9 @@
     "discrete": "ng generate component discrete",
     "logs": "ng generate component logs",
     "continuous": "ng generate component continuous",
-    "api": "ng generate component api"
+    "api": "ng generate component api",
+    "navigationService": "ng g s services/vaNavigation",
+    "interfaces": "ng g i interfaces/va-navigation"
   },
   "private": true,
   "dependencies": {

@@ -10,7 +10,7 @@ const root: Route = { path: '', redirectTo: '/discrete', pathMatch: 'full' };
 const discrete: Route = { path: 'discrete', component: DiscreteComponent };
 const logs: Route = { path: 'logs', component: LogsComponent};
 const api: Route = { path: 'api', component: ApiComponent };
-const continous: Route = { path: 'continuous', component: ContinuousComponent };
+const continuous: Route = { path: 'continuous', component: ContinuousComponent };
 const all: Route = { path: '**', redirectTo: '/discrete', pathMatch: 'full' };
 
 
@@ -19,6 +19,6 @@ export const routes: Routes = [
     discrete,
     logs,
     api,
-    continous,
+    continuous,
     all
 ];
