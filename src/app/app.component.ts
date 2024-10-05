@@ -1,12 +1,13 @@
 import { Component, OnDestroy, ViewChild, inject } from '@angular/core';
 import { RouterModule, RouterOutlet } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
-import { ApiIndicatorComponent } from './api-indicator/api-indicator.component'
+import { ApiIndicatorComponent } from './component/api-indicator/api-indicator.component'
 import { Location } from '@angular/common';
 import { MatTabGroup, MatTabsModule } from '@angular/material/tabs';
 import { VaNavigationService } from './services/va-navigation.service';
 import { RouteIndexType, RouteValuesType } from './interfaces/va-navigation';
-import { DiscreteComponent } from './discrete/discrete.component';
+import { DiscreteComponent } from './component/discrete/discrete.component';
+import { LogsComponent } from "./component/logs/logs.component";
 
 declare var webkitSpeechRecognition: any;
 declare var SpeechRecognition: any;
@@ -20,8 +21,9 @@ declare var SpeechRecognition: any;
     ApiIndicatorComponent,
     RouterModule,
     MatTabsModule,
-    DiscreteComponent
-  ],
+    DiscreteComponent,
+    LogsComponent
+],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
@@ -40,7 +42,7 @@ export class AppComponent implements OnDestroy{
   constructor(private location: Location) {
 
     this.unregisterChangeListener = this.location.onUrlChange((url, state) => {
-      // React to URL Change here
+      // React to the URL change here
       const urlLink: RouteValuesType = url as unknown as RouteValuesType;
 
       this.tabGroup.selectedIndex = this.navigationService.getIndexForRoute(urlLink);

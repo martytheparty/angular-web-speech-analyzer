@@ -1,9 +1,10 @@
 import { 
     Routes, Route } from '@angular/router';
-import { DiscreteComponent } from './discrete/discrete.component';
-import { LogsComponent } from './logs/logs.component';
-import { ApiComponent } from './api/api.component';
-import { ContinuousComponent } from './continuous/continuous.component';
+import { DiscreteComponent } from './component/discrete/discrete.component';
+import { LogsComponent } from './component/logs/logs.component';
+import { ApiComponent } from './component/api/api.component';
+import { ContinuousComponent } from './component/continuous/continuous.component';
+
 
 
 const root: Route = { path: '', redirectTo: '/discrete', pathMatch: 'full' };

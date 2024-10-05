@@ -1,5 +1,5 @@
 import { Component, effect, inject } from '@angular/core';
-import { SpeechServiceService } from '../../speech-service.service';
+import { SpeechServiceService } from '../../../speech-service.service';
 
 @Component({
   selector: 'app-discrete-result',
@@ -16,8 +16,8 @@ export class DiscreteResultComponent {
 
   constructor() {
     effect(  () => {
-      if (this.speechService.voiceResult() !== undefined) {
-        this.result = this.speechService.voiceResult();
+      if (this.speechService.voiceResultSignal() !== undefined) {
+        this.result = this.speechService.voiceResultSignal();
       }
     });    
   }
