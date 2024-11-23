@@ -1,1 +1,65 @@
-<p>logs works!</p>
+
+
+@if (logListing.length > 0) {
+  <button 
+    (click)="clear()"
+    mat-flat-button
+  >Clear</button>
+
+<table>
+    <ng-content *ngFor="let logKey of logListingKeys; index as i">
+      <tr 
+        class="title"
+        [ngClass]="(logListing[i]['type'] === 'result') ? 'result' : ''"
+      >
+        <td colspan="2">
+          {{logListing[i]['type']}}
+        </td>
+      </tr>
+      @if(logListing[i]['type'] === 'result')
+      {
+        <tr 
+        class="title"
+        [ngClass]="(logListing[i]['type'] === 'result') ? 'result' : ''"
+      >
+        <td colspan="2">
+          <div>
+          transcript: {{ logListing[i]['results'][0][0].transcript }}
+          </div>
+          <div>
+          confidence: {{ logListing[i]['results'][0][0].confidence }}
+          </div>
+          <div>
+            JSON: {{ logListing[i]['results'][0][0] | json}}
+          </div>
+        </td>
+      </tr>
+      }
+      <tr
+        class="title"
+        [ngClass]="(logListing[i]['type'] === 'result') ? 'result' : ''"
+        >
+        <td>
+          key
+        </td>
+        <td>
+          value
+        </td>
+      </tr>
+      <tr *ngFor="let key of logKey; index as j">
+        <td>
+
+            {{key}}  
+
+        </td>
+        <td>
+          {{logListing[i][key]}}
+        </td>
+      </tr>
+    </ng-content>
+</table>
+
+} @else {
+  No Logs Available
+}
+

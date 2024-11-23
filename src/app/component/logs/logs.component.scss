@@ -1,0 +1,17 @@
+.title {
+    background-color: #CCCCCC;
+
+    &.result
+    {
+       background-color: #00CC00; 
+    }
+}
+
+table {
+    width: 100%;
+    border: 1px solid black;
+}
+
+button {
+    margin: 5px;
+}

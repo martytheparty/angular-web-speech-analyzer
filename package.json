@@ -17,7 +17,8 @@
     "continuous": "ng generate component continuous",
     "api": "ng generate component api",
     "navigationService": "ng g s services/vaNavigation",
-    "interfaces": "ng g i interfaces/va-navigation"
+    "interfaces": "ng g i interfaces/va-navigation",
+    "lc-indicator": "ng generate component log-count-indicator"
   },
   "private": true,
   "dependencies": {

@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
-import { SpeechServiceService } from '../../../speech-service.service';
+import { SpeechService } from '../../../speech-service.service';
 
 @Component({
   selector: 'app-record-button',
@@ -11,7 +11,7 @@ import { SpeechServiceService } from '../../../speech-service.service';
 })
 export class RecordButtonComponent {
 
-  speechService: SpeechServiceService = inject(SpeechServiceService);
+  speechService: SpeechService = inject(SpeechService);
 
   record(): void
   {

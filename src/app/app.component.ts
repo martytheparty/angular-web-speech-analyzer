@@ -8,6 +8,7 @@ import { VaNavigationService } from './services/va-navigation.service';
 import { RouteIndexType, RouteValuesType } from './interfaces/va-navigation';
 import { DiscreteComponent } from './component/discrete/discrete.component';
 import { LogsComponent } from "./component/logs/logs.component";
+import { LogCountIndicatorComponent } from "./component/log-count-indicator/log-count-indicator.component";
 
 declare var webkitSpeechRecognition: any;
 declare var SpeechRecognition: any;
@@ -22,7 +23,8 @@ declare var SpeechRecognition: any;
     RouterModule,
     MatTabsModule,
     DiscreteComponent,
-    LogsComponent
+    LogsComponent,
+    LogCountIndicatorComponent
 ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'

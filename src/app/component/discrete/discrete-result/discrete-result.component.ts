@@ -1,5 +1,5 @@
 import { Component, effect, inject } from '@angular/core';
-import { SpeechServiceService } from '../../../speech-service.service';
+import { SpeechService } from '../../../speech-service.service';
 
 @Component({
   selector: 'app-discrete-result',
@@ -10,7 +10,7 @@ import { SpeechServiceService } from '../../../speech-service.service';
 })
 export class DiscreteResultComponent {
 
-  speechService: SpeechServiceService = inject(SpeechServiceService);
+  speechService: SpeechService = inject(SpeechService);
 
   result: string = '';
 

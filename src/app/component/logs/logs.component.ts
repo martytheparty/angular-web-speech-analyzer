@@ -1,24 +1,46 @@
 import { Component, effect, inject } from '@angular/core';
-import { SpeechServiceService } from '../../speech-service.service';
+import { SpeechService } from '../../speech-service.service';
+import { CommonModule } from '@angular/common';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-logs',
   standalone: true,
-  imports: [],
+  imports: [ 
+    CommonModule,
+    MatButtonModule
+   ],
   templateUrl: './logs.component.html',
   styleUrl: './logs.component.scss'
 })
 export class LogsComponent {
 
-  speechService: SpeechServiceService = inject(SpeechServiceService);
+  speechService: SpeechService = inject(SpeechService);
   logListing: any[] = [];
+  logListingKeys: any[] = [];
 
   constructor()
   {
-    console.log("LOG COMPONENT CONSTRUCTION...");
     effect(() => {
       this.logListing = this.speechService.allLogsSignal();
+      this.logListing.forEach(
+        (item: any) => {
+          const keys: any[] = [];
+          // this.logKeys.push(Object.keys(item));
+          for (let key in item) {
+              keys.push(key);
+
+          }
+          this.logListingKeys.push(keys);
+        }
+      );
+
     });
+  }
+
+  clear(): void
+  {
+    this.speechService.clearLogListings();
   }
 
 
