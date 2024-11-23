@@ -4,14 +4,13 @@ import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 
 @Component({
-  selector: 'app-logs',
-  standalone: true,
-  imports: [ 
-    CommonModule,
-    MatButtonModule
-   ],
-  templateUrl: './logs.component.html',
-  styleUrl: './logs.component.scss'
+    selector: 'app-logs',
+    imports: [
+        CommonModule,
+        MatButtonModule
+    ],
+    templateUrl: './logs.component.html',
+    styleUrl: './logs.component.scss'
 })
 export class LogsComponent {
 

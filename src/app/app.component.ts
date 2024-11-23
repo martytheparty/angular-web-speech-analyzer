@@ -14,20 +14,19 @@ declare var webkitSpeechRecognition: any;
 declare var SpeechRecognition: any;
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [
-    RouterOutlet,
-    MatIconModule,
-    ApiIndicatorComponent,
-    RouterModule,
-    MatTabsModule,
-    DiscreteComponent,
-    LogsComponent,
-    LogCountIndicatorComponent
-],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+    selector: 'app-root',
+    imports: [
+        RouterOutlet,
+        MatIconModule,
+        ApiIndicatorComponent,
+        RouterModule,
+        MatTabsModule,
+        DiscreteComponent,
+        LogsComponent,
+        LogCountIndicatorComponent
+    ],
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.scss'
 })
 export class AppComponent implements OnDestroy{
 

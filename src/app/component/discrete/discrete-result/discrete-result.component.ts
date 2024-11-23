@@ -2,11 +2,10 @@ import { Component, effect, inject } from '@angular/core';
 import { SpeechService } from '../../../speech-service.service';
 
 @Component({
-  selector: 'app-discrete-result',
-  standalone: true,
-  imports: [],
-  templateUrl: './discrete-result.component.html',
-  styleUrl: './discrete-result.component.scss'
+    selector: 'app-discrete-result',
+    imports: [],
+    templateUrl: './discrete-result.component.html',
+    styleUrl: './discrete-result.component.scss'
 })
 export class DiscreteResultComponent {
 

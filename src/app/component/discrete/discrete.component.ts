@@ -3,14 +3,13 @@ import { DiscreteResultComponent } from './discrete-result/discrete-result.compo
 import { RecordButtonComponent } from './record-button/record-button.component';
 
 @Component({
-  selector: 'app-discrete',
-  standalone: true,
-  imports: [
-    RecordButtonComponent,
-    DiscreteResultComponent
-  ],
-  templateUrl: './discrete.component.html',
-  styleUrl: './discrete.component.scss'
+    selector: 'app-discrete',
+    imports: [
+        RecordButtonComponent,
+        DiscreteResultComponent
+    ],
+    templateUrl: './discrete.component.html',
+    styleUrl: './discrete.component.scss'
 })
 export class DiscreteComponent {
 
