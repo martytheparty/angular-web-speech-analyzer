@@ -40,14 +40,27 @@ export class SpeechService {
        this.updateLogListings(result);
       }
 
+      this.recognition.onspeechstart = (result: any) => {
+        this.updateLogListings(result);
+       }
+
       this.recognition.onresult = (result: any) => {
         this.voiceResultSignal.set(result.results[0][0].transcript);
         this.updateLogListings(result);
       }
 
+      this.recognition.onaudioend = (result: any) => {
+        this.updateLogListings(result);
+       }
+
       this.recognition.onend = (result: any) => {
        this.audioEndSignal.set(result);
        this.updateLogListings(result);
+      }
+
+      this.recognition.onnomatch = (result: any) => {
+        this.audioEndSignal.set(result);
+        this.updateLogListings(result);
       }
     }
    }
@@ -69,7 +82,7 @@ export class SpeechService {
       this.recognition.continuous = false;
       this.recognition.interimResults = false;
       this.recognition.lang = 'en-US';
-      this.recognition.maxAlternatives = 1;
+      this.recognition.maxAlternatives = 3;
       this.recognition.start();
     }
   }

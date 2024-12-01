@@ -30,7 +30,7 @@
           confidence: {{ logListing[i]['results'][0][0].confidence }}
           </div>
           <div>
-            JSON: {{ logListing[i]['results'][0][0] | json}}
+            Result Count: {{ logListing[i]['results'][0].length}}
           </div>
         </td>
       </tr>
