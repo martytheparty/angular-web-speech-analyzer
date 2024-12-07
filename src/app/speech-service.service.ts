@@ -49,6 +49,10 @@ export class SpeechService {
         this.updateLogListings(result);
       }
 
+      this.recognition.onspeechend = (result: any) => {
+        this.updateLogListings(result);
+       }
+
       this.recognition.onaudioend = (result: any) => {
         this.updateLogListings(result);
        }
