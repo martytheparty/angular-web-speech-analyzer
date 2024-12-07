@@ -1,5 +1,5 @@
 import { Component, OnDestroy, ViewChild, inject } from '@angular/core';
-import { RouterModule, RouterOutlet } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { ApiIndicatorComponent } from './component/api-indicator/api-indicator.component'
 import { Location } from '@angular/common';
@@ -16,7 +16,6 @@ declare var SpeechRecognition: any;
 @Component({
     selector: 'app-root',
     imports: [
-        RouterOutlet,
         MatIconModule,
         ApiIndicatorComponent,
         RouterModule,
