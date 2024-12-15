@@ -31,6 +31,30 @@
           </div>
           <div>
             Result Count: {{ logListing[i]['results'][0].length}}
+            <table>
+              <tr><th>Transcript</th><th>Confidence</th></tr>
+            
+            @for(result of logListing[i]['results'][0]; track $index) 
+            {
+              <tr>
+                <td>{{result.transcript}}</td>
+                <td>{{result.confidence}}</td>
+              </tr>
+            }
+          </table>
+          </div>
+        </td>
+      </tr>
+      }
+      @if(logListing[i]['type'] === 'error')
+      {
+        <tr 
+        class="title"
+        [ngClass]="(logListing[i]['type'] === 'error') ? 'error' : ''"
+      >
+        <td colspan="2">
+          <div>
+          error: {{ logListing[i]['error'] }}
           </div>
         </td>
       </tr>
