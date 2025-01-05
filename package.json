@@ -18,7 +18,9 @@
     "api": "ng generate component api",
     "navigationService": "ng g s services/vaNavigation",
     "interfaces": "ng g i interfaces/va-navigation",
-    "lc-indicator": "ng generate component log-count-indicator"
+    "lc-indicator": "ng generate component log-count-indicator",
+    "discreteService": "ng g s component/discrete/services/discrete",
+    "voiceinterfaces": "ng g i interfaces/voice"
   },
   "private": true,
   "dependencies": {

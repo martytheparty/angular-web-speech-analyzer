@@ -1,4 +1,5 @@
 import { Injectable, signal } from '@angular/core';
+import { DiscreteResult } from './interfaces/voice';
 
 declare var webkitSpeechRecognition: any;
 declare var SpeechRecognition: any;
@@ -11,7 +12,7 @@ export class SpeechService {
   recognition: any;
   private logListing: any[] = [];
   allLogsSignal = signal<any[]>(this.logListing);
-  voiceResultSignal = signal<any>(undefined);
+  voiceResultSignal = signal<DiscreteResult[]>([]);
   audioStartSignal =  signal<any>(undefined);
   audioEndSignal =  signal<any>(undefined);
 
@@ -57,7 +58,16 @@ export class SpeechService {
       }
 
       this.recognition.onresult = (result: any) => {
-        this.voiceResultSignal.set(result.results[0][0].transcript);
+        const resultTranscript: DiscreteResult[] = [];
+        const firstTranscript = result.results[0][0].transcript as string;
+        const firstConfidence = result.results[0][0].confidence;
+        const totalCount = result.results[0].length;
+        resultTranscript.push({
+          transcript: firstTranscript,
+          confidence: firstConfidence,
+          count: totalCount 
+        });
+        this.voiceResultSignal.set(resultTranscript);
         this.updateLogListings(result);
       }
 

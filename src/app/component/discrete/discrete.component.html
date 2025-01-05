@@ -1,2 +1,16 @@
-<app-record-button></app-record-button>
-<app-discrete-result></app-discrete-result>
+<div class="buttons">
+  <app-record-button></app-record-button>
+  @if(result !== undefined)
+  {
+  <button
+    (click)="clearResults()"
+    mat-icon-button 
+    aria-label="Clear Results"
+  >
+      <mat-icon>delete</mat-icon>
+  </button>
+  }
+</div>
+<div>
+  <app-discrete-result></app-discrete-result>
+</div>

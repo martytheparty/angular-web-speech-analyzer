@@ -1,1 +1,17 @@
-{{result}}
+
+@if(results.length > 0) {
+    <table>
+        <tr>
+            <th>transcript</th>
+            <th>confidence</th>
+            <th>count</th>
+        </tr>
+        @for(result of results; track $index) {
+            <tr>
+                <td>{{result.transcript}}</td>
+                <td>{{result.confidence}}</td>
+                <td>{{result.count}}</td>
+            </tr>
+        }
+    </table>
+}
