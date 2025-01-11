@@ -1,4 +1,5 @@
 import { Injectable, OnDestroy, signal } from '@angular/core';
+import { DiscreteResult } from '../../../interfaces/voice';
 
 @Injectable({
   providedIn: 'root'
@@ -6,6 +7,7 @@ import { Injectable, OnDestroy, signal } from '@angular/core';
 export class DiscreteService {
 
   clearCountSignal = signal<number>(0);
+  results: DiscreteResult[] = []; 
 
   clear(): void
   {

@@ -14,15 +14,13 @@ export class DiscreteResultComponent {
   speechService: SpeechService = inject(SpeechService);
   discreteService: DiscreteService = inject(DiscreteService);
 
-  results: DiscreteResult[] = []; 
-
   clearCount: undefined | number = undefined;
 
   constructor() {
     effect(  () => {
       if (this.speechService.voiceResultSignal()?.length > 0) {
         let result = this.speechService.voiceResultSignal()[0];
-        this.results.unshift(result);
+        this.discreteService.results.unshift(result);
       }
 
       if (this.discreteService.clearCountSignal() !== this.clearCount) {
@@ -31,7 +29,7 @@ export class DiscreteResultComponent {
           this.discreteService.clearCountSignal() > 0
           && this.clearCount !== undefined // the component hasn't been initialized 
         ) {
-          this.results = [];
+          this.discreteService.results = [];
         }
 
         this.clearCount = this.discreteService.clearCountSignal();

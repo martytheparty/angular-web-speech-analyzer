@@ -1,12 +1,12 @@
 
-@if(results.length > 0) {
+@if(discreteService.results.length > 0) {
     <table>
         <tr>
             <th>transcript</th>
             <th>confidence</th>
             <th>count</th>
         </tr>
-        @for(result of results; track $index) {
+        @for(result of discreteService.results; track $index) {
             <tr>
                 <td>{{result.transcript}}</td>
                 <td>{{result.confidence}}</td>
