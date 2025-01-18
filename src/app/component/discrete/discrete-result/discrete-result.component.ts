@@ -15,12 +15,18 @@ export class DiscreteResultComponent {
   discreteService: DiscreteService = inject(DiscreteService);
 
   clearCount: undefined | number = undefined;
+  firstTime = true;
 
   constructor() {
     effect(  () => {
-      if (this.speechService.voiceResultSignal()?.length > 0) {
+      if (
+        this.speechService.voiceResultSignal()?.length > 0
+        && !this.firstTime
+      ) {
         let result = this.speechService.voiceResultSignal()[0];
         this.discreteService.results.unshift(result);
+      } else {
+        this.firstTime = false;
       }
 
       if (this.discreteService.clearCountSignal() !== this.clearCount) {
