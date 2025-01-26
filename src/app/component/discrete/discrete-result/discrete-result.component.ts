@@ -2,10 +2,11 @@ import { Component, effect, inject } from '@angular/core';
 import { SpeechService } from '../../../speech-service.service';
 import { DiscreteService } from '../services/discrete.service';
 import { DiscreteResult } from '../../../interfaces/voice';
+import { CommonModule } from '@angular/common';
 
 @Component({
     selector: 'app-discrete-result',
-    imports: [],
+    imports: [CommonModule],
     templateUrl: './discrete-result.component.html',
     styleUrl: './discrete-result.component.scss'
 })
@@ -16,6 +17,9 @@ export class DiscreteResultComponent {
 
   clearCount: undefined | number = undefined;
   firstTime = true;
+  showResults = false;
+  currentShowResult: DiscreteResult | undefined;
+  showToggle = false;
 
   constructor() {
     effect(  () => {
@@ -41,5 +45,22 @@ export class DiscreteResultComponent {
         this.clearCount = this.discreteService.clearCountSignal();
       }
     });    
+  }
+
+  countMouseOver(result: DiscreteResult): void 
+  {
+    this.showResults = true;
+    this.currentShowResult = result;
+    console.log(result);
+  }
+
+  countMouseOut(): void 
+  {
+    this.showResults = false;
+  }
+
+  countMouseClick(): void 
+  {
+    this.showToggle = !this.showToggle;
   }
 }

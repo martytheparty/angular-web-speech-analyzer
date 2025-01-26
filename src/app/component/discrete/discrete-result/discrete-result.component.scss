@@ -1,0 +1,22 @@
+.count {
+    cursor: pointer;
+}
+
+.countResults {
+    // position: absolute;
+    visibility: hidden;
+
+    &.show {
+        visibility: visible;
+    }
+}
+
+table.transcript {
+
+    border-collapse: collapse;
+
+        td, th {
+            border: 1px solid black;
+            padding: 0 2px;
+        }
+}

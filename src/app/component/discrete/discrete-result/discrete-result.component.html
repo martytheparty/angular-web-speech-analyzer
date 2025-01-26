@@ -1,17 +1,40 @@
 
 @if(discreteService.results.length > 0) {
-    <table>
-        <tr>
-            <th>transcript</th>
-            <th>confidence</th>
-            <th>count</th>
-        </tr>
-        @for(result of discreteService.results; track $index) {
+    <div>
+        <table>
             <tr>
-                <td>{{result.transcript}}</td>
-                <td>{{result.confidence}}</td>
-                <td>{{result.count}}</td>
+                <th>transcript</th>
+                <th>confidence</th>
+                <th>count</th>
             </tr>
-        }
-    </table>
+            @for(result of discreteService.results; track $index) {
+                <tr>
+                    <td>{{result.transcript}}</td>
+                    <td>{{result.confidence}}</td>
+                    <td>
+                        <span 
+                            class="count"
+                            (mouseover)="countMouseOver(result)"
+                            (mouseout)="countMouseOut()"
+                            (click)="countMouseClick()"
+                        >{{result.count}}</span>
+                    </td>
+                </tr>
+            }
+        </table>
+        <div
+            class="countResults"
+            [ngClass]="{ 'show': showResults || showToggle }"
+            >
+            <table class="transcript">
+                <tr><th>Text</th><th>Confidence</th></tr>
+            @for(transcript of currentShowResult?.allTranscripts; track $index) {
+                <tr>
+                    <td>{{transcript.transcript}}</td>
+                    <td>{{transcript.confidence}}</td>
+                </tr>
+            }
+            </table>
+        </div>
+    </div>
 }
