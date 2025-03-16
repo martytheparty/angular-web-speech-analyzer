@@ -88,9 +88,11 @@ export class SpeechService {
 
 
         resultTranscript.push({
+          language: this.discreteLanguage,
           transcript: firstTranscript,
           confidence: firstConfidence,
-          count: totalCount ,
+          count: totalCount,
+          maxAlternatives: this.maxAlternatives,
           allTranscripts
         });
         this.voiceResultSignal.set(resultTranscript);
@@ -131,7 +133,6 @@ export class SpeechService {
       this.recognition.interimResults = false;
       this.recognition.lang = this.discreteLanguage;
       this.recognition.maxAlternatives = this.maxAlternatives;
-      console.log(this.recognition.lang, this.recognition.maxAlternatives);
       this.recognition.start();
     }
   }

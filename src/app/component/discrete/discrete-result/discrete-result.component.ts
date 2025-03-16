@@ -51,7 +51,6 @@ export class DiscreteResultComponent {
   {
     this.showResults = true;
     this.currentShowResult = result;
-    console.log(result);
   }
 
   countMouseOut(): void 

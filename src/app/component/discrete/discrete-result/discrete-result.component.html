@@ -3,12 +3,15 @@
     <div>
         <table>
             <tr>
+                <th>language</th>
                 <th>transcript</th>
                 <th>confidence</th>
                 <th>count</th>
+                <th>max count</th>
             </tr>
             @for(result of discreteService.results; track $index) {
                 <tr>
+                    <td>{{result.language}}</td>
                     <td>{{result.transcript}}</td>
                     <td>{{result.confidence}}</td>
                     <td>
@@ -19,6 +22,7 @@
                             (click)="countMouseClick()"
                         >{{result.count}}</span>
                     </td>
+                    <td>{{result.maxAlternatives}}</td>
                 </tr>
             }
         </table>

@@ -1,7 +1,9 @@
 export interface DiscreteResult {
+    language: string
     transcript: string
     confidence: number
     count: number
+    maxAlternatives: number
     allTranscripts: DiscreteTranscript[]
 }
 

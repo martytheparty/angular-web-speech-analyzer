@@ -22,7 +22,6 @@ export class LogsComponent {
   {
     effect(() => {
       this.logListing = this.speechService.allLogsSignal();
-      console.log("log listing", this.logListing);
       this.logListing.forEach(
         (item: any) => {
           const keys: any[] = [];
