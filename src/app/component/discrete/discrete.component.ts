@@ -4,8 +4,10 @@ import { RecordButtonComponent } from './record-button/record-button.component';
 import { SpeechService } from '../../speech-service.service';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatDialog } from '@angular/material/dialog';
 import { DiscreteService } from './services/discrete.service';
 import { DiscreteResult } from '../../interfaces/voice';
+import { DiscreteSettingsDialogComponent } from './discrete-settings-dialog/discrete-settings-dialog.component';
 
 
 @Component({
@@ -20,6 +22,7 @@ import { DiscreteResult } from '../../interfaces/voice';
     styleUrl: './discrete.component.scss'
 })
 export class DiscreteComponent {
+  readonly dialog = inject(MatDialog);
   speechService: SpeechService = inject(SpeechService);
   discreteService: DiscreteService = inject(DiscreteService);
 
@@ -33,8 +36,15 @@ export class DiscreteComponent {
     });    
   }
 
-  clearResults() {
+  clearResults(): void {
     this.result = undefined;
     this.discreteService.clear();
+  }
+
+  openDiscreteForm(): void {
+    this.dialog.open(DiscreteSettingsDialogComponent, {
+      autoFocus: true,
+      restoreFocus: false,
+    });
   }
 }

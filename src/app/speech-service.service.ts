@@ -1,3 +1,4 @@
+
 import { Injectable, signal } from '@angular/core';
 import { DiscreteResult, DiscreteTranscript } from './interfaces/voice';
 
@@ -15,6 +16,14 @@ export class SpeechService {
   voiceResultSignal = signal<DiscreteResult[]>([]);
   audioStartSignal =  signal<any>(undefined);
   audioEndSignal =  signal<any>(undefined);
+
+  discreteLanguage = 'en-us';
+  maxAlternatives = 21;
+
+  discreteLanguageSignal = signal(this.discreteLanguage);
+  maxAlternativesSignal = signal(this.maxAlternatives);
+
+  private supportedLanguages: string[] = ['en-US', 'es-ES', 'es-MX'];
 
   
 
@@ -116,13 +125,31 @@ export class SpeechService {
     this.allLogsSignal.set(this.logListing);
    }
 
-   record() {
+   discreteRecord() {
     if(this.recognition) {
       this.recognition.continuous = false;
       this.recognition.interimResults = false;
-      this.recognition.lang = 'en-US';
-      this.recognition.maxAlternatives = 21;
+      this.recognition.lang = this.discreteLanguage;
+      this.recognition.maxAlternatives = this.maxAlternatives;
+      console.log(this.recognition.lang, this.recognition.maxAlternatives);
       this.recognition.start();
     }
+  }
+
+  updateDiscreteLanguage(lang: string): void
+  {
+    this.discreteLanguage = lang;
+    this.discreteLanguageSignal.set(lang);
+  }
+
+  updateMaxAlternatives(alts: number): void
+  {
+    this.maxAlternatives = alts;
+    this.maxAlternativesSignal.set(alts);
+  }
+
+  getSupportedLanguages(): string[]
+  {
+    return this.supportedLanguages;
   }
 }

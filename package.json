@@ -20,7 +20,8 @@
     "interfaces": "ng g i interfaces/va-navigation",
     "lc-indicator": "ng generate component log-count-indicator",
     "discreteService": "ng g s component/discrete/services/discrete",
-    "voiceinterfaces": "ng g i interfaces/voice"
+    "voiceinterfaces": "ng g i interfaces/voice",
+    "discrete-dialog": "ng generate component component/discrete/discrete-settings-dialog"
   },
   "private": true,
   "dependencies": {

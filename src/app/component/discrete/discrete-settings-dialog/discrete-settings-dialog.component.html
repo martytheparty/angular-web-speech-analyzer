@@ -1,0 +1,33 @@
+<h2 mat-dialog-title>Update Discrete Settings</h2>
+<mat-dialog-content>
+  <form [formGroup]="configurationForm">
+  <table>
+    <tr>
+      <td>
+        <mat-form-field>
+          <mat-label>Language</mat-label>
+          <mat-select
+            formControlName="language" 
+            cdkFocusInitial>
+            <mat-option [value]="configurationForm.controls['language'].value">{{configurationForm.controls['language'].value}}</mat-option>
+            @for(language of supportedLanguages; track language) {
+              <mat-option [value]="language">{{language}}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <mat-form-field>
+          <mat-label>Max Alternatives</mat-label>
+          <input 
+            formControlName="maxResults"
+            matInput
+          >
+        </mat-form-field>
+      </td>
+    </tr>
+  </table>
+</form>
+</mat-dialog-content>

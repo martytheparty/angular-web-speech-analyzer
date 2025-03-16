@@ -14,7 +14,7 @@ export class RecordButtonComponent {
 
   record(): void
   {
-    this.speechService.record();
+    this.speechService.discreteRecord();
   }
 
 }

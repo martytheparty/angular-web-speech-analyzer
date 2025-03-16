@@ -1,5 +1,12 @@
 <div class="buttons">
   <app-record-button></app-record-button>
+  <button
+    (click)="openDiscreteForm()"
+    mat-icon-button 
+    aria-label="Discrete Form"
+  >
+      <mat-icon>settings</mat-icon>
+  </button>
   @if(result !== undefined)
   {
   <button
