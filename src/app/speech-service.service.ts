@@ -36,6 +36,7 @@ export class SpeechService {
     this.supportedLanguageMap.set("en-GB", {code: "en-GB", name: "English (Brittish)"});
     this.supportedLanguageMap.set("es-ES", {code: "es-ES", name: "Spanish (Spain)"});
     this.supportedLanguageMap.set("es-MX", {code: "es-MX", name: "Spanish (Mexico)"});
+    this.supportedLanguageMap.set("ru-RU", {code: "ru-RU", name: "Russian (Russia)"});
     this.supportedLanguages = Array.from(this.supportedLanguageMap.keys());
   
     if ('SpeechRecongition' in window) {
