@@ -9,9 +9,13 @@
           <mat-select
             formControlName="language" 
             cdkFocusInitial>
-            <mat-option [value]="configurationForm.controls['language'].value">{{configurationForm.controls['language'].value}}</mat-option>
-            @for(language of supportedLanguages; track language) {
-              <mat-option [value]="language">{{language}}</mat-option>
+            <mat-option [value]="configurationForm.controls['language'].value">
+              {{getNameForCode(configurationForm.controls['language'].value)}}
+            </mat-option>
+            @for(languageCode of supportedLanguages; track languageCode) {
+              <mat-option [value]="languageCode">
+                {{getNameForCode(languageCode)}}
+              </mat-option>
             }
           </mat-select>
         </mat-form-field>

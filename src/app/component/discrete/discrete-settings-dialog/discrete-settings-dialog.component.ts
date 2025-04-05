@@ -35,7 +35,7 @@ export class DiscreteSettingsDialogComponent {
   speechService: SpeechService = inject(SpeechService);
 
   configurationForm = new FormGroup({
-    language: new FormControl('en-us'),
+    language: new FormControl('en-US'),
     maxResults: new FormControl('1', [Validators.required]),
   });
 
@@ -71,4 +71,13 @@ export class DiscreteSettingsDialogComponent {
     );
   }
 
+  getNameForCode(code: string | null): string
+  {
+    let name = "unknown";
+    if (code && this.speechService.getSupportedLanguageName(code)) {
+      name = this.speechService.getSupportedLanguageName(code);
+    }
+
+    return name;
+  }
 }

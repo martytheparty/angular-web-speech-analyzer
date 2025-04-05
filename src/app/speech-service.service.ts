@@ -1,6 +1,7 @@
 
 import { Injectable, signal } from '@angular/core';
 import { DiscreteResult, DiscreteTranscript } from './interfaces/voice';
+import { LanguageItem } from './interfaces/language';
 
 declare var webkitSpeechRecognition: any;
 declare var SpeechRecognition: any;
@@ -17,18 +18,26 @@ export class SpeechService {
   audioStartSignal =  signal<any>(undefined);
   audioEndSignal =  signal<any>(undefined);
 
-  discreteLanguage = 'en-us';
+  discreteLanguage = 'en-US';
   maxAlternatives = 21;
 
   discreteLanguageSignal = signal(this.discreteLanguage);
   maxAlternativesSignal = signal(this.maxAlternatives);
 
-  private supportedLanguages: string[] = ['en-US', 'es-ES', 'es-MX'];
-
+  private supportedLanguageMap = new Map<string, LanguageItem>();
+  
+  private supportedLanguages: string[] = [];
+  // private langMap: {key: string, }
   
 
   constructor() {
 
+    this.supportedLanguageMap.set("en-US", {code: "en-US", name: "English (US)"});
+    this.supportedLanguageMap.set("en-GB", {code: "en-GB", name: "English (Brittish)"});
+    this.supportedLanguageMap.set("es-ES", {code: "es-ES", name: "Spanish (Spain)"});
+    this.supportedLanguageMap.set("es-MX", {code: "es-MX", name: "Spanish (Mexico)"});
+    this.supportedLanguages = Array.from(this.supportedLanguageMap.keys());
+  
     if ('SpeechRecongition' in window) {
       this.recognition =  new SpeechRecognition();
     }  else if ('webkitSpeechRecognition' in window) {
@@ -152,5 +161,11 @@ export class SpeechService {
   getSupportedLanguages(): string[]
   {
     return this.supportedLanguages;
+  }
+
+  getSupportedLanguageName(code: string): string {
+    const lang: LanguageItem =  this.supportedLanguageMap.get(code) as LanguageItem;
+
+    return lang.name;
   }
 }
