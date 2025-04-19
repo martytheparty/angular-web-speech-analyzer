@@ -32,11 +32,15 @@ export class SpeechService {
 
   constructor() {
 
-    this.supportedLanguageMap.set("en-US", {code: "en-US", name: "English (US)"});
-    this.supportedLanguageMap.set("en-GB", {code: "en-GB", name: "English (Brittish)"});
-    this.supportedLanguageMap.set("es-ES", {code: "es-ES", name: "Spanish (Spain)"});
-    this.supportedLanguageMap.set("es-MX", {code: "es-MX", name: "Spanish (Mexico)"});
-    this.supportedLanguageMap.set("ru-RU", {code: "ru-RU", name: "Russian (Russia)"});
+    this.supportedLanguageMap.set("en-US", {locale: "en-US", name: "English (US)"});
+    this.supportedLanguageMap.set("en-GB", {locale: "en-GB", name: "English (British)"});
+    this.supportedLanguageMap.set("de-DE", {locale: "de-DE", name: "German (Germany)"});
+    this.supportedLanguageMap.set("ja-JP", {locale: "ja-JP", name: "Japanese (Japan)"});
+    this.supportedLanguageMap.set("ko-KR", {locale: "ko-KR", name: "Korean (Korea)"});
+    this.supportedLanguageMap.set("es-ES", {locale: "es-ES", name: "Spanish (Spain)"});
+    this.supportedLanguageMap.set("es-MX", {locale: "es-MX", name: "Spanish (Mexico)"});
+    this.supportedLanguageMap.set("ru-RU", {locale: "ru-RU", name: "Russian (Russia)"});
+    this.supportedLanguageMap.set("cy-GB", {locale: "cy-GB", name: "Welsh (Great Britain)"});
     this.supportedLanguages = Array.from(this.supportedLanguageMap.keys());
   
     if ('SpeechRecongition' in window) {

@@ -1,4 +1,4 @@
 export interface LanguageItem {
-    code: string;
+    locale: string;
     name: string;
 }
