@@ -28,7 +28,10 @@ export class SpeechService {
   
   private supportedLanguages: string[] = [];
   // private langMap: {key: string, }
-  
+
+  propertyMap: Record<string, any> = {};
+
+  foundProperties: string[] = [];
 
   constructor() {
 
@@ -50,6 +53,11 @@ export class SpeechService {
     }
 
     if(this.recognition) {
+
+      const properties = this.getAllProperties(this.recognition);
+      this.foundProperties = Array.from(properties).sort();
+
+      this.setPropertyMap(properties);
 
       this.recognition.onstart = (result: any) => {
        this.updateLogListings(result);
@@ -128,6 +136,27 @@ export class SpeechService {
       }
     }
    }
+
+   setPropertyMap(properties: Set<string>): void
+   {
+    properties.forEach(
+        (propertyName: string) => {
+          this.propertyMap[propertyName] = this.recognition[propertyName];
+        }
+    );
+   }
+
+   getAllProperties(obj: object): Set<string> {
+    const props = new Set();
+  
+    do {
+      Object.getOwnPropertyNames(obj).forEach((p) => props.add(p));
+    } while ((obj = Object.getPrototypeOf(obj)));
+
+    const result: Set<string> = props as unknown as Set<string>;
+  
+    return result;
+  }
 
    updateLogListings(listItem: any): void
    {

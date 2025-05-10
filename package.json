@@ -22,7 +22,8 @@
     "discreteService": "ng g s component/discrete/services/discrete",
     "voiceinterfaces": "ng g i interfaces/voice",
     "discrete-dialog": "ng generate component component/discrete/discrete-settings-dialog",
-    "langinterfaces": "ng g i interfaces/language"
+    "langinterfaces": "ng g i interfaces/language",
+    "apiinterface": "ng g i interfaces/api"
   },
   "private": true,
   "dependencies": {

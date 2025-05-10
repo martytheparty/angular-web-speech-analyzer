@@ -9,6 +9,8 @@ import { RouteIndexType, RouteValuesType } from './interfaces/va-navigation';
 import { DiscreteComponent } from './component/discrete/discrete.component';
 import { LogsComponent } from "./component/logs/logs.component";
 import { LogCountIndicatorComponent } from "./component/log-count-indicator/log-count-indicator.component";
+import { ApiComponent } from "./component/api/api.component";
+import { ContinuousComponent } from "./component/continuous/continuous.component";
 
 declare var webkitSpeechRecognition: any;
 declare var SpeechRecognition: any;
@@ -16,14 +18,16 @@ declare var SpeechRecognition: any;
 @Component({
     selector: 'app-root',
     imports: [
-        MatIconModule,
-        ApiIndicatorComponent,
-        RouterModule,
-        MatTabsModule,
-        DiscreteComponent,
-        LogsComponent,
-        LogCountIndicatorComponent
-    ],
+    MatIconModule,
+    ApiIndicatorComponent,
+    RouterModule,
+    MatTabsModule,
+    DiscreteComponent,
+    LogsComponent,
+    LogCountIndicatorComponent,
+    ApiComponent,
+    ContinuousComponent
+],
     templateUrl: './app.component.html',
     styleUrl: './app.component.scss'
 })
