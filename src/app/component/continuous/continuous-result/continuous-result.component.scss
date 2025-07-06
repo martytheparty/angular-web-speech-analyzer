@@ -1,0 +1,26 @@
+.record-text, .signal-text {
+    position: relative;
+    top: -6px;
+    display: inline-block;
+    max-width: 0 4px;
+}
+
+.dim {
+    color: #DDD;
+}
+
+mat-icon {
+    cursor: pointer;
+}
+
+.icon-circle {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid #ccc;
+  background-color: #eee;
+  font-size: 20px;
+}

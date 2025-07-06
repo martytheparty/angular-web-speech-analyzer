@@ -1,6 +1,6 @@
 
 import { Injectable, signal } from '@angular/core';
-import { DiscreteResult, DiscreteTranscript } from './interfaces/voice';
+import { DiscreteResult, DiscreteTranscript, ContinuousResult, ContinuousTranscript, ContinuousTranscripts } from './interfaces/voice';
 import { LanguageItem } from './interfaces/language';
 
 declare var webkitSpeechRecognition: any;
@@ -14,7 +14,8 @@ export class SpeechService {
   recognition: any;
   private logListing: any[] = [];
   allLogsSignal = signal<any[]>(this.logListing);
-  voiceResultSignal = signal<DiscreteResult[]>([]);
+  discreteVoiceResultSignal = signal<DiscreteResult[]>([]);
+  continuousVoiceResultSignal = signal<ContinuousResult[]>([]);
   audioStartSignal =  signal<any>(undefined);
   audioEndSignal =  signal<any>(undefined);
 
@@ -32,6 +33,8 @@ export class SpeechService {
   propertyMap: Record<string, any> = {};
 
   foundProperties: string[] = [];
+
+  continousRecording: boolean = false;
 
   constructor() {
 
@@ -89,35 +92,15 @@ export class SpeechService {
       }
 
       this.recognition.onresult = (result: any) => {
-        const resultTranscript: DiscreteResult[] = [];
-        const firstTranscript = result.results[0][0].transcript as string;
-        const firstConfidence = result.results[0][0].confidence;
-        const totalCount = result.results[0].length;
-        const allTranscripts: DiscreteTranscript[] = [];
 
-        const resultArray = Array.from(result.results[0]);
-
-        resultArray.forEach(
-          (result: any) => {
-            allTranscripts.push(
-              {
-                transcript: result.transcript,
-                confidence: result.confidence
-              }
-            );
-          }
-        );
-
-
-        resultTranscript.push({
-          language: this.discreteLanguage,
-          transcript: firstTranscript,
-          confidence: firstConfidence,
-          count: totalCount,
-          maxAlternatives: this.maxAlternatives,
-          allTranscripts
-        });
-        this.voiceResultSignal.set(resultTranscript);
+        if (this.recognition.continuous) {
+          const continuousResultTranscriptItem: ContinuousResult[] = this.processContinuous(result);
+          this.continuousVoiceResultSignal.set(continuousResultTranscriptItem);
+        } else {
+          const discreteResultTranscript = this.processDiscrete(result);
+          this.discreteVoiceResultSignal.set(discreteResultTranscript);
+        }
+        
         this.updateLogListings(result);
       }
 
@@ -135,6 +118,83 @@ export class SpeechService {
         this.updateLogListings(result);
       }
     }
+   }
+
+   processContinuous(result: any): ContinuousResult[]
+   {
+    const continuousResultTranscript: ContinuousResult[] = [];
+          const totalCount = result.results[0].length;
+          let allContinousTranscripts: ContinuousTranscripts[] = [];
+
+          const resultsArray = Array.from(result.results);
+          resultsArray.forEach(
+            (result: any) => {
+              const firstTranscript = result[0].transcript as string;
+              const firstConfidence = result[0].confidence;
+              let allResultsForResult: ContinuousTranscripts[] = [];
+              const currentResultList: ContinuousTranscript[] = Array.from(result).map(
+                (res: any) => {
+                  let resitem = {
+                    transcript: res.transcript,
+                    confidence: res.confidence
+                  };
+                  return resitem;
+                }
+              );
+
+              const continuousTranscripts: ContinuousTranscripts = {transcripts: currentResultList}
+              allResultsForResult.push(continuousTranscripts);
+
+              allContinousTranscripts = allResultsForResult;
+
+              continuousResultTranscript.push(
+                {
+                  language: this.discreteLanguage,
+                  transcript: firstTranscript,
+                  confidence: firstConfidence,
+                  count: totalCount,
+                  maxAlternatives: this.maxAlternatives,
+                  allTranscripts: allContinousTranscripts
+                }
+              );
+            }
+          );
+          return continuousResultTranscript;
+   }
+
+   processDiscrete(result: any): DiscreteResult[]
+   {
+        const resultArray = Array.from(result.results[0]);
+        const discretefirstTranscript = result.results[0][0].transcript as string;
+        const firstConfidence = result.results[0][0].confidence;
+        const discreteTotalCount = result.results[0].length;
+
+        const allTranscripts: DiscreteTranscript[] = [];
+        resultArray.forEach(
+          (result: any) => {
+            allTranscripts.push(
+              {
+                transcript: result.transcript,
+                confidence: result.confidence
+              }
+            );
+          }
+        );
+
+        const discreteResultTranscript: DiscreteResult[] = [];
+
+        const discreteResult: DiscreteResult = {
+          language: this.discreteLanguage,
+          transcript: discretefirstTranscript,
+          confidence: firstConfidence,
+          count: discreteTotalCount,
+          maxAlternatives: this.maxAlternatives,
+          allTranscripts
+        }
+
+        discreteResultTranscript.push(discreteResult)
+
+        return discreteResultTranscript;
    }
 
    setPropertyMap(properties: Set<string>): void
@@ -177,6 +237,22 @@ export class SpeechService {
       this.recognition.lang = this.discreteLanguage;
       this.recognition.maxAlternatives = this.maxAlternatives;
       this.recognition.start();
+    }
+  }
+
+  continueRecord() {
+    if(this.recognition) {
+      this.recognition.continuous = true;
+      this.recognition.interimResults = true;
+      this.recognition.lang = this.discreteLanguage;
+      this.recognition.maxAlternatives = this.maxAlternatives;
+      this.recognition.start();
+    }
+  }
+
+  stopContinueRecord() {
+    if(this.recognition) {
+      this.recognition.stop();
     }
   }
 

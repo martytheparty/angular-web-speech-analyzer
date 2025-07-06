@@ -24,10 +24,10 @@ export class DiscreteResultComponent {
   constructor() {
     effect(  () => {
       if (
-        this.speechService.voiceResultSignal()?.length > 0
+        this.speechService.discreteVoiceResultSignal()?.length > 0
         && !this.firstTime
       ) {
-        let result = this.speechService.voiceResultSignal()[0];
+        let result = this.speechService.discreteVoiceResultSignal()[0];
         this.discreteService.results.unshift(result);
       } else {
         this.firstTime = false;

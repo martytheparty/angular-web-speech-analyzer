@@ -23,7 +23,9 @@
     "voiceinterfaces": "ng g i interfaces/voice",
     "discrete-dialog": "ng generate component component/discrete/discrete-settings-dialog",
     "langinterfaces": "ng g i interfaces/language",
-    "apiinterface": "ng g i interfaces/api"
+    "apiinterface": "ng g i interfaces/api",
+    "continuous-result": "ng generate component component/continuous/continuous-result",
+    "continuous-result-item": "ng generate component component/continuous/continuous-result-item"
   },
   "private": true,
   "dependencies": {

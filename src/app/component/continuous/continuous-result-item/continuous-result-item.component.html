@@ -1,0 +1,32 @@
+@if(result()){
+
+<table>
+    <tr><th>Transcript</th><th>Confidence</th></tr>
+        @for(req of result(); track $index) {
+
+
+                    @for(transcripts of req.allTranscripts; track $index) {
+                        <tr class="alt-count">
+                            <td colspan="2">
+                                <div>
+                                    {{transcripts.transcripts.length}} Alternative(s)
+                                </div>
+                            </td>
+                        </tr>
+                        @for(transcript of transcripts.transcripts; track $index) {
+                            <tr>
+                                <td>{{transcript.transcript}}</td>
+                                <td>{{transcript.confidence}}</td>
+                            </tr>
+                        }
+
+                    }
+
+        }
+
+        @if(result()?.length === 0) {
+            <tr><td>No Records Found</td></tr>
+        }
+</table>
+
+}

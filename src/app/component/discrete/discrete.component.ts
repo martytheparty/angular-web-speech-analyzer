@@ -30,8 +30,8 @@ export class DiscreteComponent {
 
   constructor() {
     effect(  () => {
-      if (this.speechService.voiceResultSignal()?.length > 0) {
-        this.result = this.speechService.voiceResultSignal()[0];
+      if (this.speechService.discreteVoiceResultSignal()?.length > 0) {
+        this.result = this.speechService.discreteVoiceResultSignal()[0];
       }
     });    
   }

@@ -1,1 +1,27 @@
-<p>continuous works!</p>
+<div class="buttons">
+    @if(speechService.continousRecording) {
+        <button       
+            color="warn" 
+            mat-flat-button
+            (click)="toggle()"
+        >
+            Stop Recording
+        </button>
+    } @else {
+        <button        
+            mat-flat-button
+            (click)="toggle()"
+        >
+            Record Continous
+        </button>
+    }
+    <button
+     mat-icon-button 
+    aria-label="Discrete Form"
+    >
+      <mat-icon>settings</mat-icon>
+  </button>
+</div>
+<div>
+    <app-continuous-result></app-continuous-result>
+</div>
