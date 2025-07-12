@@ -27,8 +27,8 @@ import { SpeechService } from '../../speech-service.service';
     MatButtonModule,
     MatDialogModule
   ],
-  templateUrl: './discrete-settings-dialog.component.html',
-  styleUrl: './discrete-settings-dialog.component.scss'
+  templateUrl: './settings-dialog.component.html',
+  styleUrl: './settings-dialog.component.scss'
 })
 export class DiscreteSettingsDialogComponent {
 

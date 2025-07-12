@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DiscreteSettingsDialogComponent } from './discrete-settings-dialog.component';
+import { DiscreteSettingsDialogComponent } from './settings-dialog.component';
 
 describe('DiscreteSettingsDialogComponent', () => {
   let component: DiscreteSettingsDialogComponent;
