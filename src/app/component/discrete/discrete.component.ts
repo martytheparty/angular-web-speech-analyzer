@@ -7,7 +7,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDialog } from '@angular/material/dialog';
 import { DiscreteService } from './services/discrete.service';
 import { DiscreteResult } from '../../interfaces/voice';
-import { DiscreteSettingsDialogComponent } from './discrete-settings-dialog/discrete-settings-dialog.component';
+import { DiscreteSettingsDialogComponent } from '../discrete-settings-dialog/discrete-settings-dialog.component';
 
 
 @Component({
