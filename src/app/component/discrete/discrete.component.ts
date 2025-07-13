@@ -22,7 +22,7 @@ import { DiscreteSettingsDialogComponent } from '../settings-dialog/settings-dia
     styleUrl: './discrete.component.scss'
 })
 export class DiscreteComponent {
-  readonly dialog = inject(MatDialog);
+  dialog = inject(MatDialog);
   speechService: SpeechService = inject(SpeechService);
   discreteService: DiscreteService = inject(DiscreteService);
 

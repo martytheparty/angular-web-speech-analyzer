@@ -3,9 +3,13 @@ import { Component, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 
+import { MatDialog } from '@angular/material/dialog';
+
 import { SpeechService } from '../../speech-service.service';
 
 import { ContinuousResultComponent } from './continuous-result/continuous-result.component';
+import { DiscreteSettingsDialogComponent } from '../settings-dialog/settings-dialog.component';
+
 
 @Component({
     selector: 'app-continuous',
@@ -18,7 +22,7 @@ import { ContinuousResultComponent } from './continuous-result/continuous-result
     styleUrl: './continuous.component.scss'
 })
 export class ContinuousComponent {
-
+    dialog = inject(MatDialog);
     speechService: SpeechService = inject(SpeechService);
     
 
@@ -30,5 +34,12 @@ export class ContinuousComponent {
             this.speechService.stopContinueRecord();
         }
 
+    }
+
+    openDiscreteForm(): void {
+        this.dialog.open(DiscreteSettingsDialogComponent, {
+            autoFocus: true,
+            restoreFocus: false,
+        });
     }
 }
