@@ -42,6 +42,7 @@ export class SpeechService {
     this.supportedLanguageMap.set("en-GB", {locale: "en-GB", name: "English (British)"});
     this.supportedLanguageMap.set("de-DE", {locale: "de-DE", name: "German (Germany)"});
     this.supportedLanguageMap.set("ja-JP", {locale: "ja-JP", name: "Japanese (Japan)"});
+    this.supportedLanguageMap.set("ja-US", {locale: "ja-US", name: "Japanese (US)"});
     this.supportedLanguageMap.set("ko-KR", {locale: "ko-KR", name: "Korean (Korea)"});
     this.supportedLanguageMap.set("es-ES", {locale: "es-ES", name: "Spanish (Spain)"});
     this.supportedLanguageMap.set("es-MX", {locale: "es-MX", name: "Spanish (Mexico)"});
