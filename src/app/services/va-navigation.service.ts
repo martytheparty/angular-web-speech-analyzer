@@ -11,9 +11,9 @@ export class VaNavigationService {
   getRouteForIndex(index: RouteIndexType): RouteValuesType
   {
     const urlsDict = { 
-      0: '/continuous',
+      0: '/api',
       1: '/discrete',
-      2: '/api',
+      2: '/continuous',
       3: '/logs'
     };
 
@@ -24,8 +24,8 @@ export class VaNavigationService {
   {
     const routeDict = {
       '/discrete': 1,
-      '/api': 2,
-      '/continuous': 0,
+      '/api': 0,
+      '/continuous': 2,
       '/logs': 3
     }
 

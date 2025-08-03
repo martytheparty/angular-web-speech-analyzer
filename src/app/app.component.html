@@ -13,10 +13,10 @@
 <mat-tab-group #tab (selectedIndexChange)="tabChange($event)">
     <mat-tab>
         <ng-template mat-tab-label>
-            Continuous
+            API
         </ng-template>
         <ng-template matTabContent>
-            <app-continuous></app-continuous>
+            <app-api></app-api>
         </ng-template>    
     </mat-tab>
     <mat-tab> 
@@ -29,10 +29,10 @@
     </mat-tab>
     <mat-tab>
         <ng-template mat-tab-label>
-            API
+            Continuous
         </ng-template>
         <ng-template matTabContent>
-            <app-api></app-api>
+            <app-continuous></app-continuous>
         </ng-template>    
     </mat-tab>
     <mat-tab>

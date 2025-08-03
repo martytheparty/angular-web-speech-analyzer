@@ -7,7 +7,7 @@ import { ContinuousComponent } from './component/continuous/continuous.component
 
 
 
-const root: Route = { path: '', redirectTo: '/continuous', pathMatch: 'full' };
+const root: Route = { path: '', redirectTo: '/api', pathMatch: 'full' };
 const discrete: Route = { path: 'discrete', component: DiscreteComponent };
 const logs: Route = { path: 'logs', component: LogsComponent};
 const api: Route = { path: 'api', component: ApiComponent };
