@@ -37,6 +37,7 @@ export class DiscreteSettingsDialogComponent {
   configurationForm = new FormGroup({
     language: new FormControl('en-US'),
     maxResults: new FormControl('1', [Validators.required]),
+    grammars: new FormControl('')
   });
 
   supportedLanguages: string[] = this.speechService.getSupportedLanguages();
@@ -44,7 +45,7 @@ export class DiscreteSettingsDialogComponent {
   constructor() {
     // setting up the signals subscriptions
     effect(() => {
-       if (this.speechService.discreteLanguageSignal() 
+      if (this.speechService.discreteLanguageSignal() 
         !== this.configurationForm.controls['language'].value)
       {
         this.configurationForm.controls['language'].setValue(this.speechService.discreteLanguageSignal());
@@ -54,6 +55,12 @@ export class DiscreteSettingsDialogComponent {
         !== this.configurationForm.controls['maxResults'].value)
       {
         this.configurationForm.controls['maxResults'].setValue(this.speechService.maxAlternativesSignal().toString());
+      }
+
+      if (this.speechService.speechGrammarsSignal() 
+        !== this.configurationForm.controls['grammars'].value)
+      {
+        this.configurationForm.controls['grammars'].setValue(this.speechService.speechGrammarsSignal());
       }
     }
     );
@@ -65,7 +72,7 @@ export class DiscreteSettingsDialogComponent {
          if (this.configurationForm.dirty) {
           this.speechService.updateDiscreteLanguage(results.language);        
           this.speechService.updateMaxAlternatives(results.maxResults);
-
+          this.speechService.updateGrammars(results.grammars);
         }
       }
     );

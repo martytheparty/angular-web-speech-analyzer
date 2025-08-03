@@ -4,7 +4,7 @@
   <table>
     <tr>
       <td>
-        <mat-form-field>
+        <mat-form-field class="full-width">
           <mat-label>Language</mat-label>
           <mat-select
             formControlName="language" 
@@ -23,12 +23,26 @@
     </tr>
     <tr>
       <td>
-        <mat-form-field>
+        <mat-form-field class="full-width">
           <mat-label>Max Alternatives</mat-label>
           <input 
             formControlName="maxResults"
             matInput
           >
+        </mat-form-field>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Speech Grammars (JSGF format)</mat-label>
+          <textarea
+            matInput
+            formControlName="grammars"
+            rows="6"
+            style="font-family: monospace"
+          ></textarea>
+           <mat-hint>#JSGF V1.0; grammar colors; public &lt;color&gt; = red | blue | green | yellow | black | white | orange | purple | pink | brown | gray | grey | cyan | magenta | gold | silver;</mat-hint>
         </mat-form-field>
       </td>
     </tr>

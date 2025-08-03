@@ -21,9 +21,11 @@ export class SpeechService {
 
   discreteLanguage = 'en-US';
   maxAlternatives = 21;
+  speechGrammars = "";
 
   discreteLanguageSignal = signal(this.discreteLanguage);
   maxAlternativesSignal = signal(this.maxAlternatives);
+  speechGrammarsSignal = signal(this.speechGrammars);
 
   private supportedLanguageMap = new Map<string, LanguageItem>();
   
@@ -231,12 +233,36 @@ export class SpeechService {
     this.allLogsSignal.set(this.logListing);
    }
 
+   getSpeechRecognitionList(): any {
+      // the browsers seem ignore this as of 8/2/2025
+      let sg: any;
+
+      if ('SpeechRecongition' in window) {
+        const SpeechGrammarList = (window as any).SpeechGrammarList;
+        sg = new SpeechGrammarList();
+      }  else if ('webkitSpeechRecognition' in window) {
+        const webkitSpeechGrammarList = (window as any).webkitSpeechGrammarList;
+        sg = new webkitSpeechGrammarList();
+      }
+
+      const weightAssigned = 1;
+
+      // 1 = highest priority (full weight)
+      // 0.5 = medium influence
+      // 0 = no influence
+
+      sg.addFromString(this.speechGrammars, weightAssigned);
+
+      return sg;
+   }
+
    discreteRecord() {
     if(this.recognition) {
       this.recognition.continuous = false;
       this.recognition.interimResults = false;
       this.recognition.lang = this.discreteLanguage;
       this.recognition.maxAlternatives = this.maxAlternatives;
+      this.recognition.grammars = this.getSpeechRecognitionList();
       this.recognition.start();
     }
   }
@@ -247,6 +273,7 @@ export class SpeechService {
       this.recognition.interimResults = true;
       this.recognition.lang = this.discreteLanguage;
       this.recognition.maxAlternatives = this.maxAlternatives;
+      this.recognition.grammars = this.getSpeechRecognitionList();
       this.recognition.start();
     }
   }
@@ -267,6 +294,12 @@ export class SpeechService {
   {
     this.maxAlternatives = alts;
     this.maxAlternativesSignal.set(alts);
+  }
+
+  updateGrammars(grammars: string): void
+  {
+    this.speechGrammars = grammars;
+    this.speechGrammarsSignal.set(grammars);
   }
 
   getSupportedLanguages(): string[]
