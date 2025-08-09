@@ -1,3 +1,47 @@
+<h1 class="api-tab-heading">Purpose of the API Tab</h1>
+<p>
+The API tab compares the current state of the Voice API to its state when this application was created (Summer 2025). 
+Properties are categorized as follows:
+</p>
+<table class="api-legend">
+    <tr>
+        <td>
+            <mat-icon
+            class="positive"
+            >
+            check_box
+            </mat-icon>
+        </td>
+        <td>
+            The property existed in Summer 2025 and still exists.
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <mat-icon
+            class="negative"
+            >
+            close
+            </mat-icon>
+        </td>
+        <td>
+            The property existed in Summer 2025 but no longer exists.
+        </td>
+    </tr>
+        <tr>
+        <td>
+            <mat-icon
+            class="neutral"
+            >
+            help
+            </mat-icon>
+        </td>
+        <td>
+            The property was added after 2025.
+        </td>
+    </tr>
+</table>
+
 <table
     mat-table
     [dataSource]="apiProperties"
