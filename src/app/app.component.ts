@@ -1,6 +1,17 @@
-import { Component, OnDestroy, ViewChild, inject } from '@angular/core';
+import { 
+  Component, 
+  OnDestroy, 
+  ViewChild, 
+  inject,
+  TemplateRef
+} from '@angular/core';
 import { RouterModule } from '@angular/router';
+
 import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialog } from '@angular/material/dialog';
+
 import { ApiIndicatorComponent } from './component/api-indicator/api-indicator.component'
 import { Location } from '@angular/common';
 import { MatTabGroup, MatTabsModule } from '@angular/material/tabs';
@@ -26,7 +37,9 @@ declare var SpeechRecognition: any;
     LogsComponent,
     LogCountIndicatorComponent,
     ApiComponent,
-    ContinuousComponent
+    ContinuousComponent,
+    MatMenuModule,
+    MatButtonModule,
 ],
     templateUrl: './app.component.html',
     styleUrl: './app.component.scss'
@@ -34,8 +47,13 @@ declare var SpeechRecognition: any;
 export class AppComponent implements OnDestroy{
 
   navigationService: VaNavigationService = inject(VaNavigationService);
+  dialog: MatDialog = inject(MatDialog);
 
-   @ViewChild('tab') tabGroup!: MatTabGroup;
+  @ViewChild('tab') tabGroup!: MatTabGroup;
+  @ViewChild('aboutWebsite') aboutWebsiteTemplate!: TemplateRef<any>;
+  @ViewChild('aboutDeveloper') aboutDeveloperTemplate!: TemplateRef<any>;
+  @ViewChild('howToUse') howToUseTemplate!: TemplateRef<any>;
+  @ViewChild('whatCouldGoWrong') whatCouldGoWrongTemplate!: TemplateRef<any>;
 
   private unregisterChangeListener: VoidFunction;
 
@@ -72,4 +90,21 @@ export class AppComponent implements OnDestroy{
 
     this.location.go(this.navigationService.getRouteForIndex(routeIndex))
   }
+
+  openAboutWebsiteDialog(): void {
+    this.dialog.open(this.aboutWebsiteTemplate);
+  }
+
+  openAboutDeveloperDialog(): void {
+    this.dialog.open(this.aboutDeveloperTemplate);
+  }
+
+  openHowToUseWebsiteDialog(): void {
+    this.dialog.open(this.howToUseTemplate);
+  }
+
+  openWhatCouldGoWrongDialog(): void {
+    this.dialog.open(this.whatCouldGoWrongTemplate);
+  }
+
 }

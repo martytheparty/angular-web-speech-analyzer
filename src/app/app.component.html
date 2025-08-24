@@ -1,4 +1,15 @@
-<h3>The Angular Voice Analyzer</h3>
+<div class="header">
+    <h3>The Angular Voice Analyzer</h3>
+
+    <mat-icon 
+    class="menu"
+    tabindex="0"
+    aria-hidden="false"
+    aria-label="Menu"
+    fontIcon="menu"
+    [matMenuTriggerFor]="hamburgerMenu">
+    </mat-icon>
+</div>
 <div class="indicators">
     <app-api-indicator 
         title="Speech Recognition API"
@@ -44,3 +55,58 @@
         </ng-template>    
     </mat-tab>
 </mat-tab-group>
+
+<mat-menu #hamburgerMenu="matMenu">
+    <button 
+        (click)="openAboutWebsiteDialog()"
+        mat-menu-item
+    >About The Site</button>
+    <button 
+        (click)="openAboutDeveloperDialog()"
+        mat-menu-item
+    >About The Developer</button>
+    <a href="https://www.youtube.com/playlist?list=PL2g-SceHVEbFn9l2hr7453a6SeGY2Rfv5" mat-menu-item>Development Journey</a>
+    <button 
+        (click)="openHowToUseWebsiteDialog()"
+        mat-menu-item
+    >How To Use</button>
+    <button 
+        (click)="openWhatCouldGoWrongDialog()"
+        mat-menu-item
+    >What Could Go Wrong</button>
+</mat-menu>
+
+<ng-template #aboutWebsite>
+    <h1>About This Project</h1>
+    <p>
+    This website was developed as an interactive platform for exploring the capabilities of the Voice Recognition API available in modern web browsers. Its purpose is to provide a hands-on environment where users can experiment with both discrete and continuous modes of speech recognition, gaining a clearer understanding of how browsers interpret and process spoken input.
+    </p>
+    <p>
+    Beyond simple experimentation, the site highlights the attributes and configuration options of the API as they were anticipated to function in mid-2025. By making these features visible and testable, the project not only demonstrates the current state of browser-based voice technology but also serves as a resource for developers, students, and enthusiasts who wish to study the API in greater depth.
+    </p>
+    <p>
+    Ultimately, the goal of this project is to bridge the gap between technical documentation and practical experience. Rather than reading about speech recognition in the abstract, visitors are encouraged to engage directly with the tools themselves, experimenting, observing results, and forming their own insights into the evolving role of voice interaction on the web.
+    </p>
+</ng-template>
+
+<ng-template #aboutDeveloper>
+    <h1>About the Author</h1>
+
+    <p>My name is Marty, and I have been programming since Christmas Day of 1980, when I first began writing code. That early curiosity grew into a lifelong pursuit. By 1996, I had shifted my focus to the emerging world of the web, building my first websites at a time when the internet was just beginning to take shape as a mainstream platform.</p>
+
+    <p>That same year, I joined Boeing as a Systems Engineer, where my primary responsibility was writing software specifications for the AC-130U Gunship. This role gave me a strong foundation in precision, documentation, and the discipline required to design software systems for complex, mission-critical environments.</p>
+
+    <p>In 1999, I transitioned into web development professionally, with the official title of “HTML Producer.” The field was evolving rapidly, and I embraced the challenge of keeping pace with new technologies and practices as the internet matured.</p>
+
+    <p>More recently, in 2023, I discovered the Voice Recognition API and became deeply interested in its potential. To explore it, I first built a simple application using vanilla JavaScript, HTML, and CSS. That project laid the groundwork for a larger endeavor: creating this site. My goal was not only to deepen my understanding of the API but also to integrate it with Angular, a framework I have worked with extensively in professional settings.</p>
+
+    <p>This website represents the culmination of that effort. Completed in the summer of 2025, it reflects both my ongoing interest in web technologies and my belief that voice interaction will play an increasingly significant role in the future of the internet.</p>
+</ng-template>
+
+<ng-template #howToUse>
+    How To Use This Website
+</ng-template>
+
+<ng-template #whatCouldGoWrong>
+    What Could Go Wrong
+</ng-template>
