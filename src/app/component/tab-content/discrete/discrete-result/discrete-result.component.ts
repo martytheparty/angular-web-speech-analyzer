@@ -1,7 +1,7 @@
 import { Component, effect, inject } from '@angular/core';
-import { SpeechService } from '../../../speech-service.service';
+import { SpeechService } from '../../../../speech-service.service';
 import { DiscreteService } from '../services/discrete.service';
-import { DiscreteResult } from '../../../interfaces/voice';
+import { DiscreteResult } from '../../../../interfaces/voice';
 import { CommonModule } from '@angular/common';
 
 @Component({

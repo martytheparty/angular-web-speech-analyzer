@@ -1,13 +1,13 @@
 import { Component, effect, inject } from '@angular/core';
 import { DiscreteResultComponent } from './discrete-result/discrete-result.component';
 import { RecordButtonComponent } from './record-button/record-button.component';
-import { SpeechService } from '../../speech-service.service';
+import { SpeechService } from '../../../speech-service.service';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialog } from '@angular/material/dialog';
 import { DiscreteService } from './services/discrete.service';
-import { DiscreteResult } from '../../interfaces/voice';
-import { DiscreteSettingsDialogComponent } from '../settings-dialog/settings-dialog.component';
+import { DiscreteResult } from '../../../interfaces/voice';
+import { DiscreteSettingsDialogComponent } from '../../settings-dialog/settings-dialog.component';
 
 
 @Component({

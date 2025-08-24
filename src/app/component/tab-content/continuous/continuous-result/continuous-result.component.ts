@@ -2,9 +2,9 @@ import { Component, effect, inject } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
 
-import { ContinuousResult } from '../../../interfaces/voice';
+import { ContinuousResult } from '../../../../interfaces/voice';
 
-import { SpeechService } from '../../../speech-service.service';
+import { SpeechService } from '../../../../speech-service.service';
 import { ContinuousResultItemComponent } from '../continuous-result-item/continuous-result-item.component';
 import { MatIconModule } from '@angular/material/icon';
 

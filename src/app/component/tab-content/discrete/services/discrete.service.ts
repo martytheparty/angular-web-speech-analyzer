@@ -1,5 +1,5 @@
 import { Injectable, OnDestroy, signal } from '@angular/core';
-import { DiscreteResult } from '../../../interfaces/voice';
+import { DiscreteResult } from '../../../../interfaces/voice';
 
 @Injectable({
   providedIn: 'root'

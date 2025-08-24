@@ -1,5 +1,5 @@
 import { Component, inject, effect } from '@angular/core';
-import { SpeechService } from '../../speech-service.service';
+import { SpeechService } from '../../../speech-service.service';
 
 @Component({
     selector: 'app-log-count-indicator',

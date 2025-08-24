@@ -12,16 +12,16 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialog } from '@angular/material/dialog';
 
-import { ApiIndicatorComponent } from './component/api-indicator/api-indicator.component'
+import { ApiIndicatorComponent } from './component/indicators/api-indicator/api-indicator.component'
 import { Location } from '@angular/common';
 import { MatTabGroup, MatTabsModule } from '@angular/material/tabs';
 import { VaNavigationService } from './services/va-navigation.service';
 import { RouteIndexType, RouteValuesType } from './interfaces/va-navigation';
-import { DiscreteComponent } from './component/discrete/discrete.component';
-import { LogsComponent } from "./component/logs/logs.component";
-import { LogCountIndicatorComponent } from "./component/log-count-indicator/log-count-indicator.component";
-import { ApiComponent } from "./component/api/api.component";
-import { ContinuousComponent } from "./component/continuous/continuous.component";
+import { DiscreteComponent } from './component/tab-content/discrete/discrete.component';
+import { LogsComponent } from "./component/tab-content/logs/logs.component";
+import { LogCountIndicatorComponent } from "./component/indicators/log-count-indicator/log-count-indicator.component";
+import { ApiComponent } from "./component/tab-content/api/api.component";
+import { ContinuousComponent } from "./component/tab-content/continuous/continuous.component";
 
 declare var webkitSpeechRecognition: any;
 declare var SpeechRecognition: any;
@@ -106,5 +106,4 @@ export class AppComponent implements OnDestroy{
   openWhatCouldGoWrongDialog(): void {
     this.dialog.open(this.whatCouldGoWrongTemplate);
   }
-
 }

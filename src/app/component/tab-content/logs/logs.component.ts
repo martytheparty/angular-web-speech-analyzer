@@ -1,5 +1,5 @@
 import { Component, effect, inject } from '@angular/core';
-import { SpeechService } from '../../speech-service.service';
+import { SpeechService } from '../../../speech-service.service';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 

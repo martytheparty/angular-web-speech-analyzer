@@ -1,5 +1,5 @@
 import { Component, input } from '@angular/core';
-import { ContinuousResult } from '../../../interfaces/voice';
+import { ContinuousResult } from '../../../../interfaces/voice';
 
 @Component({
   selector: 'app-continuous-result-item',

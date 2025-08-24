@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
-import { SpeechService } from '../../../speech-service.service';
+import { SpeechService } from '../../../../speech-service.service';
 
 @Component({
     selector: 'app-record-button',

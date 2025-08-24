@@ -259,6 +259,7 @@ export class SpeechService {
    discreteRecord() {
     if(this.recognition) {
       this.recognition.continuous = false;
+      // make this configurable interimResults
       this.recognition.interimResults = false;
       this.recognition.lang = this.discreteLanguage;
       this.recognition.maxAlternatives = this.maxAlternatives;
@@ -270,6 +271,7 @@ export class SpeechService {
   continueRecord() {
     if(this.recognition) {
       this.recognition.continuous = true;
+      // make this configurable interimResults
       this.recognition.interimResults = true;
       this.recognition.lang = this.discreteLanguage;
       this.recognition.maxAlternatives = this.maxAlternatives;

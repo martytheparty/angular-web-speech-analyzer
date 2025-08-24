@@ -5,10 +5,10 @@ import { MatIconModule } from '@angular/material/icon';
 
 import { MatDialog } from '@angular/material/dialog';
 
-import { SpeechService } from '../../speech-service.service';
+import { SpeechService } from '../../../speech-service.service';
 
 import { ContinuousResultComponent } from './continuous-result/continuous-result.component';
-import { DiscreteSettingsDialogComponent } from '../settings-dialog/settings-dialog.component';
+import { DiscreteSettingsDialogComponent } from '../../settings-dialog/settings-dialog.component';
 
 
 @Component({

@@ -5,8 +5,8 @@ import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
 
-import { SpeechService } from '../../speech-service.service';
-import { ApiProperty, ExpectedType } from '../../interfaces/api';
+import { SpeechService } from '../../../speech-service.service';
+import { ApiProperty, ExpectedType } from '../../../interfaces/api';
 
 @Component({
     selector: 'app-api',

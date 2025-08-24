@@ -1,9 +1,11 @@
 import { 
-    Routes, Route } from '@angular/router';
-import { DiscreteComponent } from './component/discrete/discrete.component';
-import { LogsComponent } from './component/logs/logs.component';
-import { ApiComponent } from './component/api/api.component';
-import { ContinuousComponent } from './component/continuous/continuous.component';
+    Routes,
+    Route
+} from '@angular/router';
+import { DiscreteComponent } from './component/tab-content/discrete/discrete.component';
+import { LogsComponent } from './component/tab-content/logs/logs.component';
+import { ApiComponent } from './component/tab-content/api/api.component';
+import { ContinuousComponent } from './component/tab-content/continuous/continuous.component';
 
 
 
