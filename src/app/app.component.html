@@ -24,7 +24,10 @@
 <mat-tab-group #tab (selectedIndexChange)="tabChange($event)">
     <mat-tab>
         <ng-template mat-tab-label>
-            API ?
+            API 
+            @if(speechService.foundApiChange) {
+                <app-api-change-indicator></app-api-change-indicator>
+            }
         </ng-template>
         <ng-template matTabContent>
             <app-api></app-api>

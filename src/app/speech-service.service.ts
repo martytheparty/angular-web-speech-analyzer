@@ -27,6 +27,8 @@ export class SpeechService {
   maxAlternativesSignal = signal(this.maxAlternatives);
   speechGrammarsSignal = signal(this.speechGrammars);
 
+  foundApiChange = false;
+
   private supportedLanguageMap = new Map<string, LanguageItem>();
   
   private supportedLanguages: string[] = [];

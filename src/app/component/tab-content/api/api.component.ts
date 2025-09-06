@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, EventEmitter, inject, Output } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
 
@@ -75,6 +75,19 @@ export class ApiComponent {
                     } 
                 ); 
             }
-        )        
+        )
+        
+
+        let foundChange = false;
+        this.apiProperties.forEach(
+            (property) => {
+                if (property.type !== 'expectedAndFound') {
+                    foundChange = true;
+                }
+            }
+        )
+        if (foundChange) {
+            this.speechService.foundApiChange = true;
+        }
     }
 }

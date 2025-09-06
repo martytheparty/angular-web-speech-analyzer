@@ -22,6 +22,8 @@ import { LogsComponent } from "./component/tab-content/logs/logs.component";
 import { LogCountIndicatorComponent } from "./component/indicators/log-count-indicator/log-count-indicator.component";
 import { ApiComponent } from "./component/tab-content/api/api.component";
 import { ContinuousComponent } from "./component/tab-content/continuous/continuous.component";
+import { SpeechService } from './speech-service.service';
+import { ApiChangeIndicatorComponent } from './component/indicators/api-change-indicator/api-change-indicator.component';
 
 declare var webkitSpeechRecognition: any;
 declare var SpeechRecognition: any;
@@ -40,6 +42,7 @@ declare var SpeechRecognition: any;
     ContinuousComponent,
     MatMenuModule,
     MatButtonModule,
+    ApiChangeIndicatorComponent
 ],
     templateUrl: './app.component.html',
     styleUrl: './app.component.scss'
@@ -47,6 +50,7 @@ declare var SpeechRecognition: any;
 export class AppComponent implements OnDestroy{
 
   navigationService: VaNavigationService = inject(VaNavigationService);
+  speechService: SpeechService = inject(SpeechService);
   dialog: MatDialog = inject(MatDialog);
 
   @ViewChild('tab') tabGroup!: MatTabGroup;
@@ -56,7 +60,6 @@ export class AppComponent implements OnDestroy{
   @ViewChild('whatCouldGoWrong') whatCouldGoWrongTemplate!: TemplateRef<any>;
 
   private unregisterChangeListener: VoidFunction;
-
 
   hasSpeechRecognition = false;
   hasWebkitSpeechRecognition = false;
