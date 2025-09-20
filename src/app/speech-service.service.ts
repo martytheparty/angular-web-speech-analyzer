@@ -19,13 +19,17 @@ export class SpeechService {
   audioStartSignal =  signal<any>(undefined);
   audioEndSignal =  signal<any>(undefined);
 
-  discreteLanguage = 'en-US';
+  language = 'en-US';
   maxAlternatives = 21;
   speechGrammars = "";
+  interimResults = false;
+  processLocally = false;
 
-  discreteLanguageSignal = signal(this.discreteLanguage);
+  languageSignal = signal(this.language);
   maxAlternativesSignal = signal(this.maxAlternatives);
   speechGrammarsSignal = signal(this.speechGrammars);
+  interimResultsSignal = signal(this.interimResults);
+  processLocallySignal = signal(this.processLocally);
 
   foundApiChange = false;
 
@@ -154,7 +158,7 @@ export class SpeechService {
 
               continuousResultTranscript.push(
                 {
-                  language: this.discreteLanguage,
+                  language: this.language,
                   transcript: firstTranscript,
                   confidence: firstConfidence,
                   count: totalCount,
@@ -189,7 +193,7 @@ export class SpeechService {
         const discreteResultTranscript: DiscreteResult[] = [];
 
         const discreteResult: DiscreteResult = {
-          language: this.discreteLanguage,
+          language: this.language,
           transcript: discretefirstTranscript,
           confidence: firstConfidence,
           count: discreteTotalCount,
@@ -262,8 +266,9 @@ export class SpeechService {
     if(this.recognition) {
       this.recognition.continuous = false;
       // make this configurable interimResults
-      this.recognition.interimResults = false;
-      this.recognition.lang = this.discreteLanguage;
+      this.recognition.interimResults = this.interimResults;
+      this.recognition.processLocally = this.processLocally;
+      this.recognition.lang = this.language;
       this.recognition.maxAlternatives = this.maxAlternatives;
       this.recognition.grammars = this.getSpeechRecognitionList();
       this.recognition.start();
@@ -274,8 +279,9 @@ export class SpeechService {
     if(this.recognition) {
       this.recognition.continuous = true;
       // make this configurable interimResults
-      this.recognition.interimResults = true;
-      this.recognition.lang = this.discreteLanguage;
+      this.recognition.interimResults = this.interimResults;
+      this.recognition.processLocally = this.processLocally;
+      this.recognition.lang = this.language;
       this.recognition.maxAlternatives = this.maxAlternatives;
       this.recognition.grammars = this.getSpeechRecognitionList();
       this.recognition.start();
@@ -288,10 +294,10 @@ export class SpeechService {
     }
   }
 
-  updateDiscreteLanguage(lang: string): void
+  updateLanguage(lang: string): void
   {
-    this.discreteLanguage = lang;
-    this.discreteLanguageSignal.set(lang);
+    this.language = lang;
+    this.languageSignal.set(lang);
   }
 
   updateMaxAlternatives(alts: number): void
@@ -304,6 +310,18 @@ export class SpeechService {
   {
     this.speechGrammars = grammars;
     this.speechGrammarsSignal.set(grammars);
+  }
+
+  updateInterimResults(interim: boolean): void
+  {
+    this.interimResults = interim;
+    this.interimResultsSignal.set(interim);
+  }
+
+  updateProcessLocally(process: boolean): void
+  {
+    this.processLocally = process;
+    this.processLocallySignal.set(process);
   }
 
   getSupportedLanguages(): string[]

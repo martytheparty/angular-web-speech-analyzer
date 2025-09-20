@@ -11,6 +11,8 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+
 import { SpeechService } from '../../speech-service.service';
 
 
@@ -25,7 +27,8 @@ import { SpeechService } from '../../speech-service.service';
     MatSelectModule,
     ReactiveFormsModule,
     MatButtonModule,
-    MatDialogModule
+    MatDialogModule,
+    MatCheckboxModule
   ],
   templateUrl: './settings-dialog.component.html',
   styleUrl: './settings-dialog.component.scss'
@@ -37,7 +40,9 @@ export class DiscreteSettingsDialogComponent {
   configurationForm = new FormGroup({
     language: new FormControl('en-US'),
     maxResults: new FormControl('1', [Validators.required]),
-    grammars: new FormControl('')
+    grammars: new FormControl(''),
+    processLocally: new FormControl(false),
+    interimResults: new FormControl(false)
   });
 
   supportedLanguages: string[] = this.speechService.getSupportedLanguages();
@@ -45,10 +50,10 @@ export class DiscreteSettingsDialogComponent {
   constructor() {
     // setting up the signals subscriptions
     effect(() => {
-      if (this.speechService.discreteLanguageSignal() 
+      if (this.speechService.languageSignal() 
         !== this.configurationForm.controls['language'].value)
       {
-        this.configurationForm.controls['language'].setValue(this.speechService.discreteLanguageSignal());
+        this.configurationForm.controls['language'].setValue(this.speechService.languageSignal());
       }
 
       if (this.speechService.maxAlternativesSignal().toString() 
@@ -62,6 +67,11 @@ export class DiscreteSettingsDialogComponent {
       {
         this.configurationForm.controls['grammars'].setValue(this.speechService.speechGrammarsSignal());
       }
+
+      this.configurationForm.controls['interimResults'].setValue(this.speechService.interimResultsSignal());
+
+      this.configurationForm.controls['processLocally'].setValue(this.speechService.processLocallySignal());
+
     }
     );
 
@@ -70,9 +80,11 @@ export class DiscreteSettingsDialogComponent {
       (results: any) => {
         const form = this.configurationForm;
          if (this.configurationForm.dirty) {
-          this.speechService.updateDiscreteLanguage(results.language);        
+          this.speechService.updateLanguage(results.language);        
           this.speechService.updateMaxAlternatives(results.maxResults);
           this.speechService.updateGrammars(results.grammars);
+          this.speechService.updateInterimResults(results.interimResults);
+          this.speechService.updateProcessLocally(results.processLocally);
         }
       }
     );
