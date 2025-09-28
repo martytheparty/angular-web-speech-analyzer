@@ -111,5 +111,82 @@
 </ng-template>
 
 <ng-template #whatCouldGoWrong>
-    What Could Go Wrong
+    <div class="dialog-content">
+        <h1>What Could Go Wrong</h1>
+        <h2>Voice Recognition: How it works & what we do</h2>
+
+            <table class="voice-table">
+                <thead>
+                <tr>
+                    <th scope="col">Topic</th>
+                    <th scope="col">Details</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!-- 1. Which API are you actually using? -->
+                <tr>
+                    <td><strong>1. Which API are we using?</strong></td>
+                    <td>
+                    This site uses your browser’s built-in speech features (e.g., <code>SpeechRecognition</code> / Web Speech API)
+                    or third-party cloud speech services depending on the browser and configuration. When recognition runs,
+                    audio may be transmitted to the browser vendor’s speech servers (for example, Google for Chrome or Microsoft for Edge),
+                    or to a cloud speech provider if we call a cloud SDK directly.
+                    </td>
+                </tr>
+
+                <!-- 2. Legal considerations -->
+                <tr>
+                    <td><strong>2. Legal considerations</strong></td>
+                    <td>
+                    <ul>
+                        <li>We do <strong>not</strong> store your raw audio on our servers by default.</li>
+                        <li>Third parties (browser vendors or cloud providers) may log or retain audio/transcripts — see their privacy policies below.</li>
+                        <li>Depending on your location, laws like GDPR or CCPA may require explicit disclosure and consent.</li>
+                        <li>If you use this feature in sensitive contexts (health, legal, children), additional rules may apply.</li>
+                    </ul>
+                    </td>
+                </tr>
+
+                <!-- 3. What others typically do -->
+                <tr>
+                    <td><strong>3. What others typically do</strong></td>
+                    <td>
+                    <p>
+                        Common practice is to show a clear notice and ask the user to opt in before starting voice capture. Example wording we use:
+                    </p>
+                    <blockquote>
+                        “This site uses your browser’s speech recognition which may transmit audio to Google or Microsoft for processing.
+                        We do not store your audio on our servers.”
+                    </blockquote>
+                    <p>Helpful links:</p>
+                    <ul>
+                        <li><a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google Privacy Policy</a></li>
+                        <li><a href="https://privacy.microsoft.com" target="_blank" rel="noopener noreferrer">Microsoft Privacy Statement</a></li>
+                    </ul>
+                    </td>
+                </tr>
+
+                <!-- 4. Ways to reduce risk -->
+                <tr>
+                    <td><strong>4. Ways to reduce risk</strong></td>
+                    <td>
+                    <ul>
+                        <li>Offer an explicit “Enable Voice” button so users intentionally opt in.</li>
+                        <li>Provide the short disclaimer above and link to third-party privacy pages.</li>
+                        <li>Where possible, use on-device recognition (or give users a local-only option) to avoid uploading audio to the cloud.</li>
+                        <li>If you rely on cloud speech for sensitive data, consider contractual / compliance steps (e.g., data processing agreement, HIPAA compliance if required).</li>
+                    </ul>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        <h2>API Changes</h2>
+        <p>
+            Coming Soon!
+        </p>
+        <h2>Feature Flag Enablement</h2>
+        <p>
+            Coming Soon!
+        </p>
+    </div>
 </ng-template>
