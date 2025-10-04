@@ -113,7 +113,7 @@
 <ng-template #whatCouldGoWrong>
     <div class="dialog-content">
         <h1>What Could Go Wrong</h1>
-        <h2>Voice Recognition: How it works & what we do</h2>
+        <h2><strong>Legal Considerations</strong>: Cloud Providers Data Collection</h2>
 
             <table class="voice-table">
                 <thead>
@@ -180,13 +180,94 @@
                 </tr>
                 </tbody>
             </table>
-        <h2>API Changes</h2>
-        <p>
-            Coming Soon!
-        </p>
-        <h2>Feature Flag Enablement</h2>
-        <p>
-            Coming Soon!
-        </p>
+        <h2><strong>API Stability:</strong> Risks and Considerations</h2>
+<table class="voice-table">
+    <thead>
+      <tr>
+        <th scope="col">Topic</th>
+        <th scope="col">Details</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- 1. Browser dependency -->
+      <tr>
+        <td><strong>1. Browser dependency</strong></td>
+        <td>
+          The Web Speech API is implemented differently in each browser, and not all browsers support it equally.
+          Chrome and Edge currently use cloud-based processing (Google and Microsoft respectively),
+          while other browsers may not support it at all or may drop support without notice.
+        </td>
+      </tr>
+
+      <!-- 2. API versioning and breaking changes -->
+      <tr>
+        <td><strong>2. API versioning and breaking changes</strong></td>
+        <td>
+          The browser-level Web Speech API has no formal versioning or long-term stability guarantees.
+          A browser update or vendor change in how the API communicates with their servers
+          could break functionality or change recognition behavior overnight.
+        </td>
+      </tr>
+
+      <!-- 3. Cloud API changes -->
+      <tr>
+        <td><strong>3. Cloud API changes</strong></td>
+        <td>
+          If you use explicit cloud services (e.g., Google Cloud Speech-to-Text or Microsoft Azure Speech Service),
+          those APIs may change endpoints, authentication methods, pricing models, or supported languages.
+          Using them without version pinning or update monitoring can result in downtime or unexpected costs.
+        </td>
+      </tr>
+
+      <!-- 4. Mitigation strategies -->
+      <tr>
+        <td><strong>4. Mitigation strategies</strong></td>
+        <td>
+          <ul>
+            <li>Monitor API release notes or changelogs for your chosen platform.</li>
+            <li>Abstract your speech code behind a service or wrapper class so you can switch providers if needed.</li>
+            <li>Implement graceful fallback behavior (e.g., show a message if speech recognition fails).</li>
+            <li>Consider local/offline recognition options (e.g., Whisper, Vosk) to avoid dependency on vendor APIs.</li>
+          </ul>
+        </td>
+      </tr>
+
+      <!-- 5. Recommendation -->
+      <tr>
+        <td><strong>5. Recommendation</strong></td>
+        <td>
+          Treat speech recognition APIs as volatile dependencies. Avoid building critical app logic
+          that depends on specific browser behavior. Keep users informed when voice features are unavailable.
+        </td>
+      </tr>
+    </tbody>
+  </table>
+        <h2><strong>Feature Flag Enablement:</strong> Browser Flag Variability</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Issue</th>
+      <th>Description</th>
+      <th>Impact</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>It works on my machine!</td>
+      <td>
+        Browser vendors (like Google, Microsoft, or Apple) can remotely toggle
+        experimental or security-related flags that control API behavior. These
+        changes may occur silently through browser updates or policy settings.
+      </td>
+      <td>
+        Two identical computers running the same version of the browser might
+        behave differently, causing inconsistent functionality or broken
+        features. This makes supporting the application and debugging user
+        issues difficult.
+      </td>
+    </tr>
+  </tbody>
+</table>
+
     </div>
 </ng-template>
