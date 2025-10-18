@@ -8,15 +8,17 @@ import { MatDialog } from '@angular/material/dialog';
 import { DiscreteService } from './services/discrete.service';
 import { DiscreteResult } from '../../../interfaces/voice';
 import { DiscreteSettingsDialogComponent } from '../../settings-dialog/settings-dialog.component';
+import { WarningIndicatorComponent } from '../../indicators/warning-indicator/warning-indicator.component';
 
 
 @Component({
     selector: 'app-discrete',
     imports: [
-        RecordButtonComponent,
         DiscreteResultComponent,
         MatButtonModule,
-        MatIconModule
+        MatIconModule,
+        RecordButtonComponent,
+        WarningIndicatorComponent
     ],
     templateUrl: './discrete.component.html',
     styleUrl: './discrete.component.scss'

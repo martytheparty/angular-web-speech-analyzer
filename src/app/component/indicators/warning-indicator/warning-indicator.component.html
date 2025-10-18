@@ -1,0 +1,32 @@
+<button
+    mat-icon-button 
+    aria-label="warning"
+    (click)="openWarning()"
+>
+    <mat-icon>warning</mat-icon>
+</button>
+
+<ng-template #warningDialog>
+
+  <div id="warning-message-dialog">
+    <h2 mat-dialog-title>
+      Warning (Personal Data Alert)
+    </h2>
+    <p>
+
+    This site uses your browser’s built-in speech features 
+    (e.g., SpeechRecognition / Web Speech API) or third-party 
+    cloud speech services depending on the browser and configuration. 
+    When recognition runs, audio may be transmitted to the browser vendor’s 
+    speech servers (for example, Google for Chrome or Microsoft for Edge), 
+    or to a cloud speech provider if we call a cloud SDK directly.
+
+    </p>
+
+    <p>Helpful links:</p>
+    <ul>
+        <li><a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google Privacy Policy</a></li>
+        <li><a href="https://privacy.microsoft.com" target="_blank" rel="noopener noreferrer">Microsoft Privacy Statement</a></li>
+    </ul>
+  </div>
+</ng-template>

@@ -9,6 +9,7 @@ import { SpeechService } from '../../../speech-service.service';
 
 import { ContinuousResultComponent } from './continuous-result/continuous-result.component';
 import { DiscreteSettingsDialogComponent } from '../../settings-dialog/settings-dialog.component';
+import { WarningIndicatorComponent } from '../../indicators/warning-indicator/warning-indicator.component';
 
 
 @Component({
@@ -16,7 +17,8 @@ import { DiscreteSettingsDialogComponent } from '../../settings-dialog/settings-
     imports: [
         MatButtonModule,
         MatIconModule,
-        ContinuousResultComponent
+        ContinuousResultComponent,
+        WarningIndicatorComponent
     ],
     templateUrl: './continuous.component.html',
     styleUrl: './continuous.component.scss'

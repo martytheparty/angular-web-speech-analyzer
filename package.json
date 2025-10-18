@@ -26,7 +26,8 @@
     "apiinterface": "ng g i interfaces/api",
     "continuous-result": "ng generate component component/continuous/continuous-result",
     "continuous-result-item": "ng generate component component/continuous/continuous-result-item",
-    "api-change": "ng g c component/indicators/api-change-indicator"
+    "api-change": "ng g c component/indicators/api-change-indicator",
+    "warning-indicator": "ng g c component/indicators/warning-indicator"
   },
   "private": true,
   "dependencies": {
