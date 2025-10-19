@@ -6,6 +6,7 @@
     "start": "ng serve",
     "build": "ng build",
     "ibuild": "ng build --base-href /voice/",
+    "ghbuild": "ng build --base-href /angular-web-speech-analyzer/",
     "watch": "ng build --watch --configuration development",
     "serve:dist": "npx http-server ./dist/voice-api-analyzer/browser --spa",
     "test": "ng test",
