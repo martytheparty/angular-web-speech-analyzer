@@ -9,12 +9,12 @@ import { ContinuousComponent } from './component/tab-content/continuous/continuo
 
 
 
-const root: Route = { path: '', redirectTo: '/api', pathMatch: 'full' };
+const root: Route = { path: '', redirectTo: 'api', pathMatch: 'full' };
 const discrete: Route = { path: 'discrete', component: DiscreteComponent };
 const logs: Route = { path: 'logs', component: LogsComponent};
 const api: Route = { path: 'api', component: ApiComponent };
 const continuous: Route = { path: 'continuous', component: ContinuousComponent };
-const all: Route = { path: '**', redirectTo: '/discrete', pathMatch: 'full' };
+const all: Route = { path: '**', redirectTo: 'discrete', pathMatch: 'full' };
 
 
 export const routes: Routes = [

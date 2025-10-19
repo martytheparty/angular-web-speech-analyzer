@@ -24,6 +24,7 @@ import { ApiComponent } from "./component/tab-content/api/api.component";
 import { ContinuousComponent } from "./component/tab-content/continuous/continuous.component";
 import { SpeechService } from './speech-service.service';
 import { ApiChangeIndicatorComponent } from './component/indicators/api-change-indicator/api-change-indicator.component';
+import { Router } from '@angular/router';
 
 declare var webkitSpeechRecognition: any;
 declare var SpeechRecognition: any;
@@ -64,12 +65,11 @@ export class AppComponent implements OnDestroy{
   hasSpeechRecognition = false;
   hasWebkitSpeechRecognition = false;
 
-  constructor(private location: Location) {
+  constructor(private router: Router, private location: Location) {
 
     this.unregisterChangeListener = this.location.onUrlChange((url, state) => {
       // React to the URL change here
-      const urlLink: RouteValuesType = url as unknown as RouteValuesType;
-
+      const urlLink: RouteValuesType = url.replace(/\//g,'').replace('voice','') as unknown as RouteValuesType;
       this.tabGroup.selectedIndex = this.navigationService.getIndexForRoute(urlLink);
     });
 
@@ -91,7 +91,10 @@ export class AppComponent implements OnDestroy{
   {
     const routeIndex = event as RouteIndexType;
 
-    this.location.go(this.navigationService.getRouteForIndex(routeIndex))
+    // this.location.go(this.navigationService.getRouteForIndex(routeIndex))
+    // this.router.navigate([this.navigationService.getRouteForIndex(routeIndex)]);
+    
+    this.router.navigateByUrl(this.navigationService.getRouteForIndex(routeIndex));
   }
 
   openAboutWebsiteDialog(): void {
