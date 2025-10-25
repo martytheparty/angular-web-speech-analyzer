@@ -69,7 +69,13 @@ export class AppComponent implements OnDestroy{
 
     this.unregisterChangeListener = this.location.onUrlChange((url, state) => {
       // React to the URL change here
-      const urlLink: RouteValuesType = url.replace(/\//g,'').replace('voice','') as unknown as RouteValuesType;
+      // expected URLS are: 
+      // /discrete (local)
+      // voice/discrete (https://www.ilikeemail.com/voice/discrete)
+      // angular-web-speech-analyzer/discrete (https://martytheparty.github.io/angular-web-speech-analyzer/discrete)
+      const parts = url.split("/");
+      
+      const urlLink: RouteValuesType = parts.pop() as unknown as RouteValuesType;
       this.tabGroup.selectedIndex = this.navigationService.getIndexForRoute(urlLink);
     });
 
