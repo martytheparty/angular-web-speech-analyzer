@@ -50,3 +50,20 @@ p {
 .voice-table {
     margin: 20px
 }
+
+.video-container {
+    max-width: 100%;
+    overflow: hidden;
+    margin: 1rem auto;     /* centers and adds space above/below */
+    padding: 1rem;         /* space inside the box */
+    background: #f8f8f8;   /* subtle background for contrast */
+    border-radius: 12px;   /* rounded corners */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15); /* soft shadow */
+}
+
+  video {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    display: block;
+    border-radius: 8px;
+  }
