@@ -13,7 +13,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialog } from '@angular/material/dialog';
 
 import { ApiIndicatorComponent } from './component/indicators/api-indicator/api-indicator.component'
-import { Location } from '@angular/common';
+import { DOCUMENT, Location } from '@angular/common';
 import { MatTabGroup, MatTabsModule } from '@angular/material/tabs';
 import { VaNavigationService } from './services/va-navigation.service';
 import { RouteIndexType, RouteValuesType } from './interfaces/va-navigation';
@@ -65,6 +65,10 @@ export class AppComponent implements OnDestroy{
   hasSpeechRecognition = false;
   hasWebkitSpeechRecognition = false;
 
+  howToVideoURL = "";
+
+  private document = inject(DOCUMENT);
+
   constructor(private router: Router, private location: Location) {
 
     this.unregisterChangeListener = this.location.onUrlChange((url, state) => {
@@ -77,6 +81,20 @@ export class AppComponent implements OnDestroy{
       
       const urlLink: RouteValuesType = parts.pop() as unknown as RouteValuesType;
       this.tabGroup.selectedIndex = this.navigationService.getIndexForRoute(urlLink);
+
+
+      this.howToVideoURL = this.document.location.protocol + "//" + this.document.location.host;
+
+      // remove the first item from parts
+      parts.shift();
+
+      parts.forEach(
+        (part: string) => {
+          this.howToVideoURL = this.howToVideoURL + "/" + part;
+        } 
+      );
+
+      this.howToVideoURL = this.howToVideoURL + "/how-to-use.mp4";
     });
 
     if ('SpeechRecongition' in window) {
